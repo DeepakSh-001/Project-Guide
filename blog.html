@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resources | Project Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{font-family:Inter;margin:0;background:#f5f7fb}
+header{background:#0b5ed7;color:white;padding:20px 40px}
+nav a{color:white;margin-left:20px;text-decoration:none;font-weight:600}
+.container{max-width:1000px;margin:40px auto;padding:0 40px}
+.card{
+  background:white;padding:20px;border-radius:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,.08);
+  margin-bottom:20px;cursor:pointer
+}
+.card img{
+  width:100%;max-height:220px;object-fit:cover;border-radius:10px
+}
+.card h3{margin:15px 0 5px}
+.add-btn{
+  display:inline-block;margin-bottom:20px;
+  background:#0b5ed7;color:white;padding:10px 16px;
+  border-radius:8px;text-decoration:none
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <h2>Project Guide</h2>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="blog.html">Resources</a>
+      <a href="faq.html">FAQs</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <a class="add-btn" href="add-blog.html">➕ Add Blog</a>
+  <div id="blogs"></div>
+</div>
+
+<script>
+const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
+const container = document.getElementById("blogs");
+
+blogs.slice().reverse().forEach((blog, index) => {
+  container.innerHTML += `
+    <div class="card" onclick="openBlog(${index})">
+      ${blog.image ? `<img src="${blog.image}">` : ``}
+      <h3>${blog.title}</h3>
+      <p>${blog.content.substring(0,120)}...</p>
+    </div>
+  `;
+});
+
+function openBlog(i){
+  localStorage.setItem("currentBlog", i);
+  window.location = "blog-post.html";
+}
+</script>
+
+</body>
+</html>
