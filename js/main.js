@@ -58,4 +58,15 @@ setInterval(() => {
   index = (index + 1) % words.length;
   wordEl.textContent = words[index];
 }, 2000);
+const input = document.getElementById("chat-input");
+const body = document.getElementById("chat-body");
+
+input.addEventListener("keypress", function(e){
+  if(e.key === "Enter"){
+    const msg = input.value;
+    body.innerHTML += `<p><b>You:</b> ${msg}</p>`;
+    body.innerHTML += `<p><b>MeetInsider:</b> I help with interviews & careers.</p>`;
+    input.value = "";
+  }
+});
 
