@@ -13,6 +13,13 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Page-level background (Professional Grey) -->
+  <style>
+    body{
+      background:#f3f4f6; /* professional grey */
+    }
+  </style>
 </head>
 
 <body>
@@ -46,14 +53,8 @@
   </div>
 </section>
 
-<div id="chatbot">
-  <div id="chat-header">MeetInsider AI</div>
-  <div id="chat-body"></div>
-  <input id="chat-input" placeholder="Ask about interviews..." />
-</div>
-
 <!-- WHO -->
-<section>
+<section class="content-section">
   <h3>Who Is MeetInsider For?</h3>
   <p class="sub">
     Students and professionals seeking clarity from people
@@ -116,9 +117,8 @@
 <!-- FOOTER (Injected via JS) -->
 <div id="footer"></div>
 
-<!-- JS -->
+<!-- JS (Navbar, Footer, Dynamic Text, Chatbot injected here) -->
 <script src="js/main.js"></script>
+
 </body>
 </html>
-
-
