@@ -1,97 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Mentee Dashboard | Project Guide</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Mentee Dashboard | MeetInsider</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-body{
-  font-family:Inter, sans-serif;
-  margin:0;
-  background:#f5f7fb;
-  color:#222;
-}
-header{
-  background:#0b5ed7;
-  padding:20px 40px;
-  color:white;
-}
-header .top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-header h1{margin:0;font-size:22px}
-nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:20px;
-  font-weight:600;
-}
-.container{
-  max-width:1200px;
-  margin:40px auto;
-  padding:0 40px;
-}
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:25px;
-}
-.card{
-  background:white;
-  padding:30px;
-  border-radius:14px;
-  box-shadow:0 8px 20px rgba(0,0,0,.08);
-}
-.card i{
-  font-size:26px;
-  color:#0b5ed7;
-  margin-bottom:10px;
-}
-.btn{
-  display:inline-block;
-  margin-top:15px;
-  background:#0b5ed7;
-  color:white;
-  padding:12px 20px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:600;
-}
-.help{
-  margin-top:60px;
-  background:#eef3ff;
-  padding:25px;
-  border-radius:14px;
-}
-footer{
-  margin-top:80px;
-  background:#111;
-  color:#aaa;
-  padding:30px;
-  text-align:center;
-}
-</style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/mentee-dashboard.css">
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
   <div class="top">
-    <h1>Project Guide</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="faq.html">FAQs</a>
-      <a href="login.html">Logout</a>
-    </nav>
+    <h1>MeetInsider</h1>
+
+    <div class="user-area">
+      <span id="menteeName">Loading...</span>
+      <button id="logoutBtn">Logout</button>
+    </div>
   </div>
 </header>
 
+<!-- MAIN -->
 <div class="container">
   <h2>Welcome 👋</h2>
   <p>Book 1:1 guidance sessions with verified mentors.</p>
@@ -120,15 +56,17 @@ footer{
   <div class="help">
     <h3>Need Help?</h3>
     <p>
-      Visit our <a href="faq.html"><b>FAQ page</b></a> for common questions
-      or contact support for assistance.
+      Visit our <a href="faq.html"><b>FAQ page</b></a> or contact support.
     </p>
   </div>
 </div>
 
 <footer>
-  © 2025 Project Guide · Helping you make confident career decisions
+  © 2025 MeetInsider · Helping you make confident career decisions
 </footer>
+
+<!-- JS -->
+<script type="module" src="js/mentee-dashboard.js"></script>
 
 </body>
 </html>
