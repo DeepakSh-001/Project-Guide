@@ -26,24 +26,45 @@ nav a {
   margin-left: 20px;
   font-weight: 600;
 }
-.role-select {
-  margin: 14px 0;
-}
 
-.role-select label {
-  display: block;
-  font-size: 14px;
+.form-title {
+  font-size: 26px;
+  font-weight: 700;
   margin-bottom: 6px;
-  font-weight: 500;
 }
 
-.role-select select {
-  width: 100%;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.form-subtitle {
+  color: #6b7280;
   font-size: 14px;
+  margin-bottom: 22px;
 }
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.input-select,
+.form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  font-size: 14px;
+  outline: none;
+}
+
+.input-select:focus,
+.form-group input:focus {
+  border-color: #2563eb;
+}
+
 
 /* HERO */
 .hero {
