@@ -13,11 +13,18 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Page-level background (Professional Grey) -->
+  <style>
+    body{
+      background:#f3f4f6; /* professional grey */
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- Navbar injected by JS -->
+<!-- NAVBAR (Injected via JS) -->
 <div id="navbar"></div>
 
 <!-- HERO -->
@@ -47,7 +54,7 @@
 </section>
 
 <!-- WHO -->
-<section class="content">
+<section class="content-section">
   <h3>Who Is MeetInsider For?</h3>
   <p class="sub">
     Students and professionals seeking clarity from people
@@ -64,21 +71,54 @@
     <div class="card">
       <i class="fa-solid fa-briefcase"></i>
       <h4>Working Professionals</h4>
-      <p>Career growth and planning.</p>
+      <p>Career growth and long-term planning.</p>
+    </div>
+
+    <div class="card">
+      <i class="fa-solid fa-arrow-right-arrow-left"></i>
+      <h4>Career Switchers</h4>
+      <p>Evaluate feasibility and transition risks.</p>
     </div>
 
     <div class="card">
       <i class="fa-solid fa-comments"></i>
       <h4>Interview Candidates</h4>
-      <p>Mock interviews with insiders.</p>
+      <p>Mock interviews with real insiders.</p>
     </div>
   </div>
 </section>
 
-<!-- Footer injected by JS -->
+<!-- SERVICES -->
+<section class="light-bg">
+  <h3>Our Services</h3>
+  <p class="sub">Simple, transparent pricing.</p>
+
+  <div class="cards">
+    <div class="card">
+      <i class="fa-solid fa-university"></i>
+      <h4>College Counselling</h4>
+      <div class="price">₹300 – ₹1000</div>
+    </div>
+
+    <div class="card">
+      <i class="fa-solid fa-route"></i>
+      <h4>Career Guidance</h4>
+      <div class="price">₹700 – ₹1500</div>
+    </div>
+
+    <div class="card">
+      <i class="fa-solid fa-user-check"></i>
+      <h4>Interview Preparation</h4>
+      <div class="price">₹700 – ₹2500</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (Injected via JS) -->
 <div id="footer"></div>
 
-<!-- JS -->
+<!-- JS (Navbar, Footer, Dynamic Text, Chatbot injected here) -->
 <script src="js/main.js"></script>
+
 </body>
 </html>
