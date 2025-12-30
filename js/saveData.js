@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     if (response.ok) {
-      alert("Data saved to Google Cloud");
+      alert("Account Created");
       form.reset();
     } else {
       alert("Error saving data");
