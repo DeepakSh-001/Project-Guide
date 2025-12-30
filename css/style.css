@@ -1,3 +1,4 @@
+/* ================= GLOBAL ================= */
 body {
   font-family: Inter, sans-serif;
   margin: 0;
@@ -5,7 +6,7 @@ body {
   color: #222;
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
 header {
   background: #0b5ed7;
   padding: 20px 40px;
@@ -27,7 +28,37 @@ nav a {
   font-weight: 600;
 }
 
-#login form
+/* ================= LOGIN / REGISTER ================= */
+.login-wrapper {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.login-card {
+  background: white;
+  width: 100%;
+  max-width: 420px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.form-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.form-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+/* FORM GROUP */
 .form-group {
   margin-bottom: 18px;
 }
@@ -39,7 +70,7 @@ nav a {
   margin-bottom: 6px;
 }
 
-/* 🔥 COMMON STYLE FOR INPUT + SELECT */
+/* INPUT + SELECT */
 .form-input {
   width: 100%;
   padding: 14px 16px;
@@ -51,7 +82,7 @@ nav a {
   box-sizing: border-box;
 }
 
-/* Remove ugly default dropdown styling */
+/* SELECT FIX */
 select.form-input {
   appearance: none;
   -webkit-appearance: none;
@@ -67,9 +98,25 @@ select.form-input {
   border-color: #2563eb;
 }
 
+/* BUTTON */
+.btn-primary {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: #0b5ed7;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
 
+.btn-primary:hover {
+  background: #0a58ca;
+}
 
-/* HERO */
+/* ================= HERO ================= */
 .hero {
   max-width: 1200px;
   margin: auto;
@@ -94,6 +141,7 @@ select.form-input {
   border-radius: 16px;
 }
 
+/* ================= BUTTONS ================= */
 .cta a {
   display: inline-block;
   margin-right: 15px;
@@ -103,17 +151,12 @@ select.form-input {
   font-weight: 600;
 }
 
-.btn-primary {
-  background: #0b5ed7;
-  color: white;
-}
-
 .btn-secondary {
   background: #eef3ff;
   color: #0b5ed7;
 }
 
-/* SECTIONS */
+/* ================= SECTIONS ================= */
 section {
   padding: 80px 40px;
   max-width: 1200px;
@@ -125,7 +168,7 @@ section {
   max-width: 700px;
 }
 
-/* CARDS */
+/* ================= CARDS ================= */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -136,7 +179,7 @@ section {
   background: white;
   padding: 30px;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 .card i {
@@ -149,13 +192,13 @@ section {
   color: #0b5ed7;
 }
 
-/* LIGHT SECTION */
+/* ================= LIGHT SECTION ================= */
 .light-bg {
   background: #eef3ff;
   border-radius: 20px;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 footer {
   background: #0b1220;
   color: #cbd5e1;
@@ -182,9 +225,13 @@ footer a {
   color: #94a3b8;
 }
 
-/* MOBILE */
+/* ================= MOBILE ================= */
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
+  }
+
+  .login-card {
+    padding: 30px 20px;
   }
 }
