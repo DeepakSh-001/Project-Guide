@@ -97,6 +97,7 @@ registerForm.addEventListener("submit", async (e) => {
         name: regName.value,
         email: regEmail.value,
         role,
+        password: regPassword.value,
         provider: "email",
         createdAt: new Date().toISOString()
       })
@@ -130,6 +131,7 @@ async function handleGoogleAuth() {
         name: user.displayName,
         email: user.email,
         role,
+        password: regPassword.value,
         provider: "google",
         createdAt: new Date().toISOString()
       })
