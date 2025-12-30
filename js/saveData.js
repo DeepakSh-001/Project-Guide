@@ -7,10 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const payload = {
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      password: document.getElementById("password").value,
-      phone: document.getElementById("phone").value,
+      name: document.getElementById("regName").value,
+      email: document.getElementById("regEmail").value,
+      password: document.getElementById("regPassword").value,
+      phone: document.getElementById("regPhone").value,
       createdAt: new Date().toISOString()
     };
 
