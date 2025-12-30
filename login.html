@@ -38,15 +38,18 @@
   <form id="loginForm" class="auth-form">
     <h2>Welcome Back</h2>
     <div class="role-select">
-  <label>
-    <input type="radio" name="role" value="mentee" checked />
-    Mentee
-  </label>
-  <label>
-    <input type="radio" name="role" value="mentor" />
-    Mentor
-  </label>
-</div>
+  <label for="userRole">I am a</label>
+  <select id="userRole" required>
+    <option value="" disabled selected>Select role</option>
+    <option value="mentee">
+      Mentee — Looking for guidance
+    </option>
+    <option value="mentor">
+      Mentor — Offering expertise
+    </option>
+    </select>
+    </div>
+
 
     <input type="email" id="loginEmail" placeholder="Email" required>
     <input type="password" id="loginPassword" placeholder="Password" required>
@@ -63,6 +66,18 @@
   <!-- REGISTER -->
   <form id="registerForm" class="auth-form hidden">
     <h2>Create Account</h2>
+    <div class="role-select">
+  <label for="userRole">I am a</label>
+  <select id="userRole" required>
+    <option value="" disabled selected>Select role</option>
+    <option value="mentee">
+      Mentee — Looking for guidance
+    </option>
+    <option value="mentor">
+      Mentor — Offering expertise
+    </option>
+    </select>
+    </div>
 
     <input type="text" id="regName" placeholder="Full Name" required>
     <input type="email" id="regEmail" placeholder="Email" required>
@@ -87,5 +102,6 @@
 
 </body>
 </html>
+
 
 
