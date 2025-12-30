@@ -83,7 +83,7 @@ registerForm.addEventListener("submit", async (e) => {
       displayName: regName.value
     });
 
-    await fetch(CLOUD_FUNCTION_URL, {
+    await fetch("https://meetinsider-210731711520.asia-south1.run.app", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -114,7 +114,7 @@ const handleGoogleAuth = async () => {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
 
-    await fetch(CLOUD_FUNCTION_URL, {
+    await fetch("https://meetinsider-210731711520.asia-south1.run.app", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
