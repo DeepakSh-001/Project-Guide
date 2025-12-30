@@ -7,8 +7,16 @@ import {
   updateProfile
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
-function getUserRole() {
-  return document.getElementById("userRole").value;
+/* ================= GOOGLE PROVIDER ================= */
+const provider = new GoogleAuthProvider();
+
+/* ================= HELPERS ================= */
+function getActiveRole() {
+  if (!loginForm.classList.contains("hidden")) {
+    return document.getElementById("loginRole").value;
+  } else {
+    return document.getElementById("registerRole").value;
+  }
 }
 
 /* ================= TOGGLE ================= */
@@ -35,57 +43,69 @@ registerToggle.onclick = () => {
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  await signInWithEmailAndPassword(
-    auth,
-    loginEmail.value,
-    loginPassword.value
-  );
+  const role = document.getElementById("loginRole").value;
+  if (!role) {
+    alert("Please select a role");
+    return;
+  }
 
-  alert("Login successful!");
+  try {
+    await signInWithEmailAndPassword(
+      auth,
+      loginEmail.value,
+      loginPassword.value
+    );
+
+    redirectByRole(role);
+  } catch (err) {
+    alert(err.message);
+  }
 });
 
 /* ================= REGISTER ================= */
 registerForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const role = getUserRole();
+  const role = document.getElementById("registerRole").value;
   if (!role) {
     alert("Please select a role");
     return;
   }
 
-  const userCred = await createUserWithEmailAndPassword(
-    auth,
-    regEmail.value,
-    regPassword.value
-  );
+  try {
+    const userCred = await createUserWithEmailAndPassword(
+      auth,
+      regEmail.value,
+      regPassword.value
+    );
 
-  await updateProfile(userCred.user, {
-    displayName: regName.value
-  });
+    await updateProfile(userCred.user, {
+      displayName: regName.value
+    });
 
-  // 🔥 STORE ROLE IN DATABASE
-  await fetch(CLOUD_FUNCTION_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      uid: userCred.user.uid,
-      name: regName.value,
-      email: regEmail.value,
-      role: role,
-      provider: "email",
-      createdAt: new Date().toISOString()
-    })
-  });
+    await fetch(CLOUD_FUNCTION_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        uid: userCred.user.uid,
+        name: regName.value,
+        email: regEmail.value,
+        role: role,
+        provider: "email",
+        createdAt: new Date().toISOString()
+      })
+    });
 
-  alert("Account created!");
+    redirectByRole(role);
+  } catch (err) {
+    alert(err.message);
+  }
 });
-;
 
-/* ================= GOOGLE LOGIN & REGISTER ================= */
+/* ================= GOOGLE LOGIN / REGISTER ================= */
 const handleGoogleAuth = async () => {
   try {
-    const role = getUserRole();
+    const role = getActiveRole();
     if (!role) {
       alert("Please select a role");
       return;
@@ -94,7 +114,6 @@ const handleGoogleAuth = async () => {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
 
-    // 🔥 STORE ROLE + USER
     await fetch(CLOUD_FUNCTION_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -108,12 +127,20 @@ const handleGoogleAuth = async () => {
       })
     });
 
-    alert("Login successful");
+    redirectByRole(role);
   } catch (err) {
     alert(err.message);
   }
 };
 
-
 document.getElementById("googleLogin").onclick = handleGoogleAuth;
 document.getElementById("googleRegister").onclick = handleGoogleAuth;
+
+/* ================= ROLE BASED REDIRECT ================= */
+function redirectByRole(role) {
+  if (role === "mentor") {
+    window.location.href = "mentor-dashboard.html";
+  } else {
+    window.location.href = "mentee-dashboard.html";
+  }
+}
