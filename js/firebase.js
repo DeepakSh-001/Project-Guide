@@ -2,12 +2,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebas
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
+  apiKey: "AIzaSyAZ4aOcmRemXoQ8ItAsMCQTNneLlCSq3hE",
   authDomain: "projectguide-web.firebaseapp.com",
   projectId: "projectguide-web",
-  storageBucket: "projectguide-web.appspot.com",
-  messagingSenderId: "XXXX",
-  appId: "XXXX"
+  storageBucket: "projectguide-web.firebasestorage.app",
+  messagingSenderId: "185191218818",
+  appId: "1:185191218818:web:75f1eeaaed0dde66913e9b"
 };
 
 export const app = initializeApp(firebaseConfig);
