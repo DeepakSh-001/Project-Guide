@@ -7,6 +7,10 @@ import {
   updateProfile
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
+function getUserRole() {
+  return document.getElementById("userRole").value;
+}
+
 /* ================= TOGGLE ================= */
 const loginToggle = document.getElementById("loginToggle");
 const registerToggle = document.getElementById("registerToggle");
