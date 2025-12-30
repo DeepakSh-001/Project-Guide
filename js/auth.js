@@ -7,7 +7,7 @@ import {
   updateProfile
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
-/* TOGGLE */
+/* ================= TOGGLE ================= */
 const loginToggle = document.getElementById("loginToggle");
 const registerToggle = document.getElementById("registerToggle");
 const loginForm = document.getElementById("loginForm");
@@ -27,20 +27,23 @@ registerToggle.onclick = () => {
   loginForm.classList.add("hidden");
 };
 
-/* EMAIL LOGIN */
+/* ================= EMAIL LOGIN ================= */
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+
   await signInWithEmailAndPassword(
     auth,
     loginEmail.value,
     loginPassword.value
   );
+
   alert("Login successful!");
 });
 
-/* REGISTER */
+/* ================= REGISTER ================= */
 registerForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+
   const userCred = await createUserWithEmailAndPassword(
     auth,
     regEmail.value,
@@ -54,11 +57,34 @@ registerForm.addEventListener("submit", async (e) => {
   alert("Account created!");
 });
 
-/* GOOGLE LOGIN */
+/* ================= GOOGLE LOGIN & REGISTER ================= */
 const provider = new GoogleAuthProvider();
 
-document.getElementById("googleLogin").onclick =
-document.getElementById("googleRegister").onclick = async () => {
-  await signInWithPopup(auth, provider);
-  alert("Google login successful!");
+const handleGoogleAuth = async () => {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+
+    // 🔥 STORE GOOGLE USER DATA IN GCP
+    await fetch("YOUR_CLOUD_FUNCTION_URL", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        uid: user.uid,
+        name: user.displayName,
+        email: user.email,
+        phone: user.phoneNumber || "",
+        provider: "google",
+        createdAt: new Date().toISOString()
+      })
+    });
+
+    alert(`Welcome ${user.displayName}`);
+  } catch (error) {
+    console.error(error);
+    alert(error.message);
+  }
 };
+
+document.getElementById("googleLogin").onclick = handleGoogleAuth;
+document.getElementById("googleRegister").onclick = handleGoogleAuth;
