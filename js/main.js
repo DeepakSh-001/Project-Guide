@@ -58,15 +58,21 @@ setInterval(() => {
   index = (index + 1) % words.length;
   wordEl.textContent = words[index];
 }, 2000);
-const input = document.getElementById("chat-input");
-const body = document.getElementById("chat-body");
+/* ================= CHATBOT ================= */
 
-input.addEventListener("keypress", function(e){
-  if(e.key === "Enter"){
-    const msg = input.value;
-    body.innerHTML += `<p><b>You:</b> ${msg}</p>`;
-    body.innerHTML += `<p><b>MeetInsider:</b> I help with interviews & careers.</p>`;
-    input.value = "";
-  }
-});
+document.body.insertAdjacentHTML("beforeend", `
+<div id="mi-chatbot">
+  <div id="mi-chat-header">
+    MeetInsider AI
+    <span id="mi-chat-close">×</span>
+  </div>
+  <div id="mi-chat-body">
+    <p><b>MeetInsider:</b> Hi 👋 How can I help you today?</p>
+  </div>
+  <input id="mi-chat-input" placeholder="Ask about careers or interviews..." />
+</div>
+
+<div id="mi-chat-toggle">💬</div>
+`);
+
 
