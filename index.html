@@ -8,142 +8,11 @@
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-<!-- Icons (Free) -->
+<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-body{
-  font-family:Inter, sans-serif;
-  margin:0;
-  background:#f5f7fb;
-  color:#222;
-}
-
-/* Header */
-header{
-  background:#0b5ed7;
-  padding:20px 40px;
-  color:white;
-}
-header .top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-header h1{
-  margin:0;
-  font-size:22px;
-}
-nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:20px;
-  font-weight:600;
-}
-
-/* Hero */
-.hero{
-  display:grid;
-  grid-template-columns:1.1fr 0.9fr;
-  gap:50px;
-  padding:80px 40px;
-  max-width:1200px;
-  margin:auto;
-}
-.hero h2{
-  font-size:40px;
-  margin-bottom:20px;
-}
-.hero p{
-  font-size:18px;
-  color:#444;
-}
-.hero img{
-  width:100%;
-  border-radius:14px;
-}
-.cta{
-  margin-top:30px;
-}
-.cta a{
-  background:#0b5ed7;
-  color:white;
-  padding:14px 24px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:600;
-  margin-right:15px;
-}
-
-/* Sections */
-section{
-  padding:80px 40px;
-  max-width:1200px;
-  margin:auto;
-}
-section h3{
-  font-size:28px;
-  margin-bottom:15px;
-}
-section p.sub{
-  color:#555;
-  max-width:700px;
-  margin-bottom:50px;
-}
-
-/* Cards */
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
-}
-.card{
-  background:white;
-  padding:30px;
-  border-radius:14px;
-  box-shadow:0 8px 20px rgba(0,0,0,.08);
-}
-.card i{
-  font-size:26px;
-  color:#0b5ed7;
-  margin-bottom:15px;
-}
-.card h4{
-  margin:10px 0;
-}
-
-/* Pricing */
-.price{
-  font-weight:700;
-  color:#0b5ed7;
-  margin-top:10px;
-}
-
-/* How it works */
-.steps{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:25px;
-}
-
-/* Footer */
-footer{
-  background:#111;
-  color:#aaa;
-  padding:40px;
-  text-align:center;
-  margin-top:60px;
-}
-
-@media(max-width:900px){
-  .hero{
-    grid-template-columns:1fr;
-  }
-  .hero h2{
-    font-size:32px;
-  }
-}
-</style>
+<!-- Main CSS -->
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -175,7 +44,7 @@ footer{
 
     <div class="cta">
       <a href="login.html">Get Guidance</a>
-      <a href="mentor-register.html" style="background:#eef3ff;color:#0b5ed7">Become a Mentor</a>
+      <a href="mentor-register.html" class="secondary-btn">Become a Mentor</a>
     </div>
   </div>
 
@@ -218,7 +87,7 @@ footer{
 </section>
 
 <!-- SERVICES -->
-<section style="background:#eef3ff;border-radius:20px">
+<section class="light-bg">
   <h3>Our Services</h3>
   <p class="sub">Simple, transparent pricing with real value.</p>
 
@@ -226,200 +95,57 @@ footer{
     <div class="card">
       <i class="fa-solid fa-university"></i>
       <h4>College Counselling</h4>
-      <p>1:1 sessions with students & alumni.</p>
       <div class="price">₹300 – ₹1000</div>
     </div>
 
     <div class="card">
       <i class="fa-solid fa-route"></i>
       <h4>Career Guidance</h4>
-      <p>Career roadmap, growth & decision clarity.</p>
       <div class="price">₹700 – ₹1500</div>
     </div>
 
     <div class="card">
       <i class="fa-solid fa-user-check"></i>
       <h4>Interview Preparation</h4>
-      <p>Mock interviews & company-specific prep.</p>
       <div class="price">₹700 – ₹2500</div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section>
-  <h3>How It Works</h3>
-
-  <div class="steps">
-    <div class="card">
-      <i class="fa-solid fa-list-check"></i>
-      <h4>Choose Service</h4>
-      <p>Select college, career, or interview guidance.</p>
-    </div>
-
-    <div class="card">
-      <i class="fa-solid fa-calendar-days"></i>
-      <h4>Select Slot</h4>
-      <p>Pick a time that works for you.</p>
-    </div>
-
-    <div class="card">
-      <i class="fa-solid fa-user-shield"></i>
-      <h4>Verified Mentor</h4>
-      <p>We assign a verified guide.</p>
-    </div>
-
-    <div class="card">
-      <i class="fa-solid fa-video"></i>
-      <h4>Attend Session</h4>
-      <p>Get clarity through a 1:1 session.</p>
-    </div>
-  </div>
-</section>
-
-<section style="
-  background:#f8faff;
-  padding:80px 40px;
-">
-  <div style="
-    max-width:1100px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-    gap:50px;
-    align-items:center
-  ">
-
-    <!-- TEXT -->
-    <div>
-      <h2 style="margin-top:0">Have Experience? Become a Mentor</h2>
-      <p style="font-size:16px;color:#555">
-        Students and professionals are looking for honest guidance from people
-        who have already walked the path.
-      </p>
-
-      <ul style="color:#444;line-height:1.8">
-        <li>Flexible sessions — you choose your time</li>
-        <li>Get paid per session</li>
-        <li>Verified & serious mentees only</li>
-        <li>Create real impact</li>
-      </ul>
-
-      <a href="for-mentors.html" style="
-        display:inline-block;
-        margin-top:20px;
-        background:#0b5ed7;
-        color:white;
-        padding:14px 26px;
-        border-radius:10px;
-        text-decoration:none;
-        font-weight:600
-      ">
-        Learn More → For Mentors
-      </a>
-    </div>
-
-    <!-- IMAGE -->
-    <div>
-      <img 
-        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1000&q=80"
-        style="
-          width:100%;
-          border-radius:18px;
-          box-shadow:0 12px 30px rgba(0,0,0,.12)
-        "
-        alt="Mentorship"
-      >
-    </div>
-
-  </div>
-</section>
-
+<!-- FOOTER -->
 <footer>
-  <footer style="
-  background:linear-gradient(180deg,#0b1220,#070b14);
-  color:#cbd5e1;
-  padding:40px 40px;
-">
-
-  <div style="
-    max-width:1100px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:30px
-  ">
-
-    <!-- BRAND -->
+  <div class="footer-grid">
     <div>
-      <h2 style="color:white;margin:0 0 10px 0;font-size:20px">
-        Project Guide
-      </h2>
-      <p style="
-        line-height:1.5;
-        color:#94a3b8;
-        font-size:14px;
-        margin:0
-      ">
-        1:1 career, college & interview guidance from people
-        who’ve already walked the path.
-      </p>
+      <h2>Project Guide</h2>
+      <p>1:1 career, college & interview guidance from people who’ve already walked the path.</p>
     </div>
 
-    <!-- QUICK LINKS -->
     <div>
-      <h3 style="color:white;margin:0 0 10px 0;font-size:16px">
-        Quick Links
-      </h3>
-      <ul style="
-        list-style:none;
-        padding:0;
-        margin:0;
-        line-height:1.8;
-        font-size:14px
-      ">
-        <li><a href="about.html" style="color:#cbd5e1;text-decoration:none">About Us</a></li>
-        <li><a href="book-session.html" style="color:#cbd5e1;text-decoration:none">Pricing</a></li>
-        <li><a href="contact.html" style="color:#cbd5e1;text-decoration:none">Contact</a></li>
-        <li><a href="login.html" style="color:#cbd5e1;text-decoration:none">Login</a></li>
-        <li><a href="for-mentors.html" style="color:#cbd5e1;text-decoration:none"><b>For Mentors</b></a></li>
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="book-session.html">Pricing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="for-mentors.html"><b>For Mentors</b></a></li>
       </ul>
     </div>
 
-    <!-- LEGAL -->
     <div>
-      <h3 style="color:white;margin:0 0 10px 0;font-size:16px">
-        Legal
-      </h3>
-      <ul style="
-        list-style:none;
-        padding:0;
-        margin:0;
-        line-height:1.8;
-        font-size:14px
-      ">
-        <li><a href="privacy-policy.html" style="color:#cbd5e1;text-decoration:none">Privacy Policy</a></li>
-        <li><a href="terms.html" style="color:#cbd5e1;text-decoration:none">Terms of Service</a></li>
-        <li><a href="trust-and-safety.html" style="color:#cbd5e1;text-decoration:none">Trust & Safety</a></li>
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="trust-and-safety.html">Trust & Safety</a></li>
       </ul>
     </div>
-
   </div>
 
-  <!-- BOTTOM BAR -->
-  <div style="
-    border-top:1px solid #1e293b;
-    margin-top:25px;
-    padding-top:15px;
-    text-align:center;
-    font-size:13px;
-    color:#94a3b8
-  ">
+  <div class="footer-bottom">
     © 2025 Project Guide
   </div>
-
 </footer>
 
-
+<!-- Main JS -->
+<script src="js/main.js"></script>
 </body>
 </html>
