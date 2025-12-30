@@ -66,7 +66,7 @@ const handleGoogleAuth = async () => {
     const user = result.user;
 
     // 🔥 STORE GOOGLE USER DATA IN GCP
-    await fetch("YOUR_CLOUD_FUNCTION_URL", {
+    await fetch("https://meetinsider-210731711520.asia-south1.run.app", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
