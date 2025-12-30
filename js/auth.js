@@ -7,16 +7,27 @@ import {
   updateProfile
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
-/* ================= GOOGLE PROVIDER ================= */
+/* 🔹 CLOUD RUN URL */
+const CLOUD_RUN_URL =
+  "https://meetinsider-210731711520.asia-south1.run.app";
+
+/* 🔹 GOOGLE PROVIDER */
 const provider = new GoogleAuthProvider();
 
-/* ================= HELPERS ================= */
+/* 🔹 HELPERS */
+function redirectByRole(role) {
+  if (role === "mentor") {
+    window.location.href = "mentor-dashboard.html";
+  } else {
+    window.location.href = "mentee-dashboard.html";
+  }
+}
+
 function getActiveRole() {
   if (!loginForm.classList.contains("hidden")) {
     return document.getElementById("loginRole").value;
-  } else {
-    return document.getElementById("registerRole").value;
   }
+  return document.getElementById("registerRole").value;
 }
 
 /* ================= TOGGLE ================= */
@@ -44,10 +55,7 @@ loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const role = document.getElementById("loginRole").value;
-  if (!role) {
-    alert("Please select a role");
-    return;
-  }
+  if (!role) return alert("Select role");
 
   try {
     await signInWithEmailAndPassword(
@@ -67,10 +75,7 @@ registerForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const role = document.getElementById("registerRole").value;
-  if (!role) {
-    alert("Please select a role");
-    return;
-  }
+  if (!role) return alert("Select role");
 
   try {
     const userCred = await createUserWithEmailAndPassword(
@@ -83,18 +88,24 @@ registerForm.addEventListener("submit", async (e) => {
       displayName: regName.value
     });
 
-    await fetch("https://meetinsider-210731711520.asia-south1.run.app", {
+    /* 🔥 SAVE USER TO CLOUD RUN */
+    const res = await fetch("https://meetinsider-210731711520.asia-south1.run.app", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         uid: userCred.user.uid,
         name: regName.value,
         email: regEmail.value,
-        role: role,
+        role,
         provider: "email",
         createdAt: new Date().toISOString()
       })
     });
+
+    if (!res.ok) {
+      const txt = await res.text();
+      console.error("Cloud Run error:", txt);
+    }
 
     redirectByRole(role);
   } catch (err) {
@@ -102,14 +113,11 @@ registerForm.addEventListener("submit", async (e) => {
   }
 });
 
-/* ================= GOOGLE LOGIN / REGISTER ================= */
-const handleGoogleAuth = async () => {
+/* ================= GOOGLE AUTH ================= */
+async function handleGoogleAuth() {
   try {
     const role = getActiveRole();
-    if (!role) {
-      alert("Please select a role");
-      return;
-    }
+    if (!role) return alert("Select role");
 
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
@@ -121,7 +129,7 @@ const handleGoogleAuth = async () => {
         uid: user.uid,
         name: user.displayName,
         email: user.email,
-        role: role,
+        role,
         provider: "google",
         createdAt: new Date().toISOString()
       })
@@ -131,16 +139,7 @@ const handleGoogleAuth = async () => {
   } catch (err) {
     alert(err.message);
   }
-};
+}
 
 document.getElementById("googleLogin").onclick = handleGoogleAuth;
 document.getElementById("googleRegister").onclick = handleGoogleAuth;
-
-/* ================= ROLE BASED REDIRECT ================= */
-function redirectByRole(role) {
-  if (role === "mentor") {
-    window.location.href = "mentor-dashboard.html";
-  } else {
-    window.location.href = "mentee-dashboard.html";
-  }
-}
