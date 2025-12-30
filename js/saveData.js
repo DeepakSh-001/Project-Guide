@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const payload = {
       name: document.getElementById("name").value,
       email: document.getElementById("email").value,
+      password: document.getElementById("password").value,
+      phone: document.getElementById("phone").value,
       createdAt: new Date().toISOString()
     };
 
