@@ -50,7 +50,7 @@ document.getElementById("footer").innerHTML = `
 `;
 
 /* ================= DYNAMIC INSIDER TEXT ================= */
-const words = ["Insider", " "];
+const words = ["Insider", "Software Engineer", "Data Analyst", "Accountant","HR", "Alumni", "Cloud Architect", "Cloud Architect", "Proffessor", "Chartered Accountant", "Investment Banker", "& Others"];
 let index = 0;
 const wordEl = document.getElementById("dynamic-word");
 
