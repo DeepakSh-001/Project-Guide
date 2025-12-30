@@ -1,0 +1,99 @@
+body {
+  font-family: Inter, sans-serif;
+  margin: 0;
+  background: #f5f7fb;
+  color: #222;
+}
+
+/* HEADER */
+header {
+  background: #0b5ed7;
+  padding: 20px 40px;
+  color: white;
+}
+
+header .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+/* USER AREA */
+.user-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: 600;
+}
+
+#logoutBtn {
+  background: white;
+  color: #0b5ed7;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#logoutBtn:hover {
+  opacity: 0.9;
+}
+
+/* MAIN */
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 40px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card i {
+  font-size: 26px;
+  color: #0b5ed7;
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  background: #0b5ed7;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.help {
+  margin-top: 60px;
+  background: #eef3ff;
+  padding: 25px;
+  border-radius: 14px;
+}
+
+footer {
+  margin-top: 80px;
+  background: #111;
+  color: #aaa;
+  padding: 30px;
+  text-align: center;
+}
