@@ -147,4 +147,36 @@ footer a {
   }
 }
 
+#chatbot{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:320px;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  overflow:hidden;
+  font-family:Inter,sans-serif;
+}
+
+#chat-header{
+  background:#2563eb;
+  color:#fff;
+  padding:12px;
+  font-weight:600;
+}
+
+#chat-body{
+  height:280px;
+  padding:10px;
+  overflow-y:auto;
+}
+
+#chat-input{
+  width:100%;
+  padding:10px;
+  border:none;
+  border-top:1px solid #eee;
+}
+
 
