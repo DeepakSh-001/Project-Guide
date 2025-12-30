@@ -1,87 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Project Guide | 1:1 Career & Interview Guidance</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>MeetInsider | 1:1 Career & Interview Guidance</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-<!-- Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- Main CSS -->
-<link rel="stylesheet" href="css/style.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="top">
-    <h1>Project Guide</h1>
-    <nav>
-      <a href="how-to-use.html">How It Works</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="blog.html">Resources</a>
-      <a href="profile.html">Profile</a>
-      <a href="faq.html">FAQs</a>
-      <a href="login.html">Login</a>
-    </nav>
-  </div>
-</header>
+<!-- NAVBAR (Injected via JS) -->
+<div id="navbar"></div>
 
 <!-- HERO -->
-<div class="hero">
-  <div>
-    <h2>Make Career Decisions with the Right People</h2>
+<section class="hero">
+  <div class="hero-text">
+    <h2>
+      Stop guessing.<br>
+      Meet the <span id="dynamic-word">Insider</span>.
+    </h2>
+
     <p>
-      1:1 guidance from verified students, professionals, and ex-employees
-      for college admissions, career growth, and interview preparation.
+      1:1 mentorship from verified insiders for college decisions,
+      career clarity, and interview preparation.
     </p>
 
     <div class="cta">
-      <a href="login.html">Get Guidance</a>
-      <a href="mentor-register.html" class="secondary-btn">Become a Mentor</a>
+      <a href="login.html" class="btn-primary">Get Guidance</a>
+      <a href="for-mentors.html" class="btn-secondary">Become a Mentor</a>
     </div>
   </div>
 
-  <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="career guidance">
-</div>
+  <div class="hero-image">
+    <img
+      src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1000&q=80"
+      alt="Mentorship">
+  </div>
+</section>
 
 <!-- WHO -->
 <section>
-  <h3>Who Is Project Guide For?</h3>
+  <h3>Who Is MeetInsider For?</h3>
   <p class="sub">
-    Whether you are starting your journey or planning your next move,
-    Project Guide connects you with people who have already done it.
+    Students and professionals seeking clarity from people
+    who have already walked the path.
   </p>
 
   <div class="cards">
     <div class="card">
       <i class="fa-solid fa-graduation-cap"></i>
       <h4>College Students</h4>
-      <p>Admissions guidance, college selection, branch decisions.</p>
+      <p>Admissions, college & branch guidance.</p>
     </div>
 
     <div class="card">
       <i class="fa-solid fa-briefcase"></i>
       <h4>Working Professionals</h4>
-      <p>Career growth, role clarity, and long-term planning.</p>
+      <p>Career growth and long-term planning.</p>
     </div>
 
     <div class="card">
       <i class="fa-solid fa-arrow-right-arrow-left"></i>
       <h4>Career Switchers</h4>
-      <p>Understand feasibility, risks, and timelines before switching.</p>
+      <p>Evaluate feasibility and transition risks.</p>
     </div>
 
     <div class="card">
       <i class="fa-solid fa-comments"></i>
       <h4>Interview Candidates</h4>
-      <p>Prepare with current or ex-employees from your target company.</p>
+      <p>Mock interviews with real insiders.</p>
     </div>
   </div>
 </section>
@@ -89,7 +84,7 @@
 <!-- SERVICES -->
 <section class="light-bg">
   <h3>Our Services</h3>
-  <p class="sub">Simple, transparent pricing with real value.</p>
+  <p class="sub">Simple, transparent pricing.</p>
 
   <div class="cards">
     <div class="card">
@@ -112,40 +107,11 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-grid">
-    <div>
-      <h2>Project Guide</h2>
-      <p>1:1 career, college & interview guidance from people who’ve already walked the path.</p>
-    </div>
+<!-- FOOTER (Injected via JS) -->
+<div id="footer"></div>
 
-    <div>
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="book-session.html">Pricing</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="for-mentors.html"><b>For Mentors</b></a></li>
-      </ul>
-    </div>
-
-    <div>
-      <h3>Legal</h3>
-      <ul>
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="terms.html">Terms of Service</a></li>
-        <li><a href="trust-and-safety.html">Trust & Safety</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="footer-bottom">
-    © 2025 Project Guide
-  </div>
-</footer>
-
-<!-- Main JS -->
+<!-- JS -->
 <script src="js/main.js"></script>
 </body>
 </html>
+
