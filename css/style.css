@@ -139,9 +139,15 @@ body {
   margin: 6px 0;
 }
 
-.avatar-wrapper:hover .dropdown {
+/* Dropdown visibility */
+.dropdown {
+  display: none;
+}
+
+.dropdown.open {
   display: block;
 }
+
 
 /* ================= LOGIN / REGISTER ================= */
 .login-wrapper {
