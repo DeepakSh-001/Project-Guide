@@ -20,20 +20,24 @@
   <!-- LEFT SIDEBAR -->
   <aside class="profile-sidebar">
     <div class="avatar-wrapper">
-      <img id="profilePic" src="https://via.placeholder.com/120" />
+      <img id="profilePic" />
       <label class="upload-btn">
-        Change
+        Change photo
         <input type="file" id="uploadPic" hidden />
       </label>
     </div>
 
     <h3 id="userName">User Name</h3>
-    <span class="role-badge" id="userRole">Mentor</span>
+    <span class="role-badge" id="userRole">Role</span>
 
     <div class="info">
       <p><b>Email:</b> <span id="email"></span></p>
-      <p><b>Expertise:</b> Career Guidance</p>
     </div>
+
+    <!-- DASHBOARD BUTTON -->
+    <button id="goDashboardBtn" class="dashboard-btn">
+      Go to Dashboard →
+    </button>
   </aside>
 
   <!-- MAIN CONTENT -->
@@ -50,30 +54,26 @@
     <section class="card">
       <h4>About</h4>
       <p>
-        Passionate about helping students and professionals make confident
-        career decisions.
+        Tell others about your background, goals, and how MeetInsider helps you.
       </p>
     </section>
 
     <!-- SESSIONS -->
     <section class="card">
       <h4>Sessions</h4>
-      <ul>
-        <li>Sessions completed: 0</li>
-        <li>Upcoming sessions: 0</li>
-      </ul>
+      <ul id="sessionInfo"></ul>
     </section>
 
     <!-- BLOGS -->
     <section class="card">
-      <h4>Blogs by you</h4>
+      <h4>Your Blogs</h4>
       <p>No blogs published yet.</p>
-      <button class="btn">Write your first blog</button>
+      <button class="btn">Write a blog</button>
     </section>
 
   </main>
 </div>
 
-<script src="js/profile.js"></script>
+<script type="module" src="js/profile.js"></script>
 </body>
 </html>
