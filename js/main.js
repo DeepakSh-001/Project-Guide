@@ -150,29 +150,29 @@ document.getElementById("footer").innerHTML = `
 
 /* ================= DYNAMIC INSIDER TEXT ================= */
 const words = ["Insider", "Engineer", "Recruiter", "Alumni", "Hiring Manager"];
-let wordIndex = 0;
+let index = 0;
 
 const dynamicWord = document.getElementById("dynamic-word");
 const strikeLine = document.querySelector(".strike-line");
 
-function runHeroAnimation() {
-  // 1️⃣ Start strike
+function animateHero() {
+  // strike
   strikeLine.classList.add("active");
 
-  // 2️⃣ Change word at peak strike
+  // change word mid-strike
   setTimeout(() => {
-    wordIndex = (wordIndex + 1) % words.length;
-    dynamicWord.textContent = words[wordIndex];
-  }, 500);
+    index = (index + 1) % words.length;
+    dynamicWord.textContent = words[index];
+  }, 400);
 
-  // 3️⃣ Remove strike
+  // reset strike
   setTimeout(() => {
     strikeLine.classList.remove("active");
-  }, 900);
+  }, 800);
 }
 
-// Initial delay (page load polish)
+// start after load
 setTimeout(() => {
-  runHeroAnimation();
-  setInterval(runHeroAnimation, 3000);
+  animateHero();
+  setInterval(animateHero, 3000);
 }, 1000);
