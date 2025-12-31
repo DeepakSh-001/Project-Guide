@@ -57,11 +57,14 @@ loginForm.addEventListener("submit", async (e) => {
 
   try {
     await signInWithEmailAndPassword(auth, email, password);
-    saveRoleAndRedirect(role);
+
+    // 🔥 Role will be read later in profile page
+    window.location.href = "profile.html";
   } catch (err) {
     alert(err.message);
   }
 });
+
 
 
 /* ================= REGISTER ================= */
