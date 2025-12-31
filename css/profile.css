@@ -10,6 +10,30 @@ body {
   color: white;
 }
 
+.navbar {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  margin: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 600;
+}
+
+nav a.active {
+  text-decoration: underline;
+}
+
+
 .profile-layout {
   display: grid;
   grid-template-columns: 280px 1fr;
