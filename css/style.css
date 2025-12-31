@@ -227,17 +227,19 @@ body {
 
   display: flex;
   align-items: center;
-  justify-content: flex-start;   /* 🔑 shifts content block right */
+  justify-content: space-between; /* 🔑 */
+
   gap: 60px;
 
   background: var(--bg-section);
   border-radius: 28px;
 }
 
+
 /* TEXT BLOCK */
 .hero-text {
-  flex: 1;
-  text-align: left;           /* 🔑 text stays left-aligned */
+  flex: 0 0 520px;     /* 🔑 FIXES EVERYTHING */
+  text-align: center;
 }
 
 /* IMAGE BLOCK */
@@ -245,12 +247,12 @@ body {
   flex: 1;
   display: flex;
   justify-content: flex-end;   /* stays on right */
-  align-items: right;         /* 🔑 vertical alignment fix */
+  align-items: center;         /* 🔑 vertical alignment fix */
 }
 
 .hero-image img {
   max-width: 300px;            /* 🔑 reduce dominance */
-  width: 80%;
+  width: 100%;
   height: auto;
   opacity: 0.95;
   transform: translateY(10px); /* 🔑 lifts image slightly */
