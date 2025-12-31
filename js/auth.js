@@ -14,13 +14,16 @@ const CLOUD_RUN_URL =
 /* 🔹 GOOGLE PROVIDER */
 const provider = new GoogleAuthProvider();
 
+/* ================= ELEMENTS ================= */
+const loginToggle = document.getElementById("loginToggle");
+const registerToggle = document.getElementById("registerToggle");
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+
 /* ================= HELPERS ================= */
-function redirectByRole(role) {
-  if (role === "mentor") {
-    window.location.href = "mentor-dashboard.html";
-  } else {
-    window.location.href = "mentee-dashboard.html";
-  }
+function saveRoleAndRedirect(role) {
+  localStorage.setItem("role", role);
+  window.location.href = "profile.html";
 }
 
 function getActiveRole() {
@@ -31,11 +34,6 @@ function getActiveRole() {
 }
 
 /* ================= TOGGLE ================= */
-const loginToggle = document.getElementById("loginToggle");
-const registerToggle = document.getElementById("registerToggle");
-const loginForm = document.getElementById("loginForm");
-const registerForm = document.getElementById("registerForm");
-
 loginToggle.onclick = () => {
   loginToggle.classList.add("active");
   registerToggle.classList.remove("active");
@@ -55,7 +53,7 @@ loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const role = document.getElementById("loginRole").value;
-  if (!role) return alert("Select role");
+  if (!role) return alert("Please select your role");
 
   try {
     await signInWithEmailAndPassword(
@@ -64,7 +62,7 @@ loginForm.addEventListener("submit", async (e) => {
       loginPassword.value
     );
 
-    redirectByRole(role);
+    saveRoleAndRedirect(role);
   } catch (err) {
     alert(err.message);
   }
@@ -75,7 +73,7 @@ registerForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const role = document.getElementById("registerRole").value;
-  if (!role) return alert("Select role");
+  if (!role) return alert("Please select your role");
 
   try {
     const userCred = await createUserWithEmailAndPassword(
@@ -104,17 +102,17 @@ registerForm.addEventListener("submit", async (e) => {
       console.warn("Cloud Run save failed (ignored):", err)
     );
 
-    redirectByRole(role);
+    saveRoleAndRedirect(role);
   } catch (err) {
     alert(err.message);
   }
 });
 
-/* ================= GOOGLE AUTH ================= */
+/* ================= GOOGLE LOGIN / REGISTER ================= */
 async function handleGoogleAuth() {
   try {
     const role = getActiveRole();
-    if (!role) return alert("Select role");
+    if (!role) return alert("Please select your role");
 
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
@@ -134,7 +132,7 @@ async function handleGoogleAuth() {
       console.warn("Cloud Run save failed (ignored):", err)
     );
 
-    redirectByRole(role);
+    saveRoleAndRedirect(role);
   } catch (err) {
     alert(err.message);
   }
