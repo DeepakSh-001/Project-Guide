@@ -250,7 +250,7 @@ body {
 }
 
 .hero-image img {
-  max-width: 150px;
+  max-width: 360px;
   width: 100%;
   height: auto;
   opacity: 0.95;
