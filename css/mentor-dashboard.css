@@ -1,0 +1,107 @@
+body {
+  font-family: Inter, sans-serif;
+  margin: 0;
+  background: #f4f7ff;
+  color: #222;
+}
+
+/* NAVBAR */
+header {
+  background: #0b5ed7;
+  padding: 16px 40px;
+  color: white;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.nav nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav a.active {
+  text-decoration: underline;
+}
+
+.nav button {
+  background: white;
+  color: #0b5ed7;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* MAIN */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+}
+
+.card {
+  background: #f7f9fc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.slot {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.slot.active {
+  background: #0b5ed7;
+  color: white;
+  border-color: #0b5ed7;
+}
+
+button {
+  background: #0b5ed7;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+footer {
+  margin-top: 60px;
+  padding: 25px;
+  text-align: center;
+  background: #111;
+  color: #aaa;
+}
