@@ -14,7 +14,7 @@ const CLOUD_RUN_URL =
 /* 🔹 GOOGLE PROVIDER */
 const provider = new GoogleAuthProvider();
 
-/* 🔹 HELPERS */
+/* ================= HELPERS ================= */
 function redirectByRole(role) {
   if (role === "mentor") {
     window.location.href = "mentor-dashboard.html";
@@ -88,8 +88,8 @@ registerForm.addEventListener("submit", async (e) => {
       displayName: regName.value
     });
 
-    /* 🔥 SAVE USER TO CLOUD RUN */
-    const res = await fetch("https://meetinsider-210731711520.asia-south1.run.app", {
+    /* 🔥 SAVE USER TO CLOUD RUN (NON-BLOCKING) */
+    fetch(CLOUD_RUN_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -97,16 +97,12 @@ registerForm.addEventListener("submit", async (e) => {
         name: regName.value,
         email: regEmail.value,
         role,
-        password: regPassword.value,
         provider: "email",
         createdAt: new Date().toISOString()
       })
-    });
-
-    if (!res.ok) {
-      const txt = await res.text();
-      console.error("Cloud Run error:", txt);
-    }
+    }).catch(err =>
+      console.warn("Cloud Run save failed (ignored):", err)
+    );
 
     redirectByRole(role);
   } catch (err) {
@@ -123,7 +119,7 @@ async function handleGoogleAuth() {
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
 
-    await fetch("https://meetinsider-210731711520.asia-south1.run.app", {
+    fetch(CLOUD_RUN_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -131,11 +127,12 @@ async function handleGoogleAuth() {
         name: user.displayName,
         email: user.email,
         role,
-        password: regPassword.value,
         provider: "google",
         createdAt: new Date().toISOString()
       })
-    });
+    }).catch(err =>
+      console.warn("Cloud Run save failed (ignored):", err)
+    );
 
     redirectByRole(role);
   } catch (err) {
