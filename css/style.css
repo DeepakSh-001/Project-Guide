@@ -237,7 +237,7 @@ body {
 /* TEXT BLOCK */
 .hero-text {
   flex: 1;
-  text-align: left;           /* 🔑 text stays left-aligned */
+  text-align: center;           /* 🔑 text stays left-aligned */
 }
 
 /* IMAGE BLOCK */
@@ -249,8 +249,8 @@ body {
 }
 
 .hero-image img {
-  max-width: 360px;            /* 🔑 reduce dominance */
-  width: 100%;
+  max-width: 300px;            /* 🔑 reduce dominance */
+  width: 80%;
   height: auto;
   opacity: 0.95;
   transform: translateY(10px); /* 🔑 lifts image slightly */
