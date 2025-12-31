@@ -55,18 +55,17 @@ loginForm.addEventListener("submit", async (e) => {
   const role = document.getElementById("loginRole").value;
   if (!role) return alert("Please select your role");
 
-  try {
-    await signInWithEmailAndPassword(
-      auth,
-      loginEmail.value,
-      loginPassword.value
-    );
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
 
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
     saveRoleAndRedirect(role);
   } catch (err) {
     alert(err.message);
   }
 });
+
 
 /* ================= REGISTER ================= */
 registerForm.addEventListener("submit", async (e) => {
