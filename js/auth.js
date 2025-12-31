@@ -52,9 +52,6 @@ registerToggle.onclick = () => {
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const role = document.getElementById("loginRole").value;
-  if (!role) return alert("Please select your role");
-
   const email = document.getElementById("loginEmail").value;
   const password = document.getElementById("loginPassword").value;
 
@@ -110,12 +107,10 @@ registerForm.addEventListener("submit", async (e) => {
 /* ================= GOOGLE LOGIN / REGISTER ================= */
 async function handleGoogleAuth() {
   try {
-    const role = getActiveRole();
-    if (!role) return alert("Please select your role");
-
     const result = await signInWithPopup(auth, provider);
     const user = result.user;
 
+    // Optional save to backend (non-blocking)
     fetch(CLOUD_RUN_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -123,19 +118,17 @@ async function handleGoogleAuth() {
         uid: user.uid,
         name: user.displayName,
         email: user.email,
-        role,
         provider: "google",
         createdAt: new Date().toISOString()
       })
-    }).catch(err =>
-      console.warn("Cloud Run save failed (ignored):", err)
-    );
+    }).catch(() => {});
 
-    saveRoleAndRedirect(role);
+    window.location.href = "profile.html";
   } catch (err) {
     alert(err.message);
   }
 }
+
 
 document.getElementById("googleLogin").onclick = handleGoogleAuth;
 document.getElementById("googleRegister").onclick = handleGoogleAuth;
