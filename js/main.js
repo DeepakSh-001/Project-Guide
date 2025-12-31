@@ -30,19 +30,31 @@ if (navbar) {
               <button id="themeToggle" title="Toggle dark mode">🌙</button>
 
               <div class="avatar-wrapper">
-                <div class="avatar">${initial}</div>
-
-                <div class="dropdown">
-                  <a href="profile.html">Profile</a>
-                  <a href="#" id="dashboardLink">Dashboard</a>
-                  <hr>
-                  <a href="#" id="logoutBtn">Logout</a>
-                </div>
-              </div>
+                  <div class="avatar" id="avatarBtn">${initial}</div>
+                      <div class="dropdown" id="avatarMenu">
+                      <a href="profile.html">Profile</a>
+                      <a href="#" id="dashboardLink">Dashboard</a>
+                       <hr>
+                      <a href="#" id="logoutBtn">Logout</a>
+                    </div>
+               </div>
             </div>
           </div>
         </header>
       `;
+const avatarBtn = document.getElementById("avatarBtn");
+const avatarMenu = document.getElementById("avatarMenu");
+
+if (avatarBtn && avatarMenu) {
+  avatarBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    avatarMenu.classList.toggle("open");
+  });
+
+  document.addEventListener("click", () => {
+    avatarMenu.classList.remove("open");
+  });
+}
 
       // Dashboard redirect
       document.getElementById("dashboardLink").onclick = () => {
