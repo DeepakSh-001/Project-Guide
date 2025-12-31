@@ -244,16 +244,18 @@ body {
 .hero-image {
   flex: 1;
   display: flex;
-  justify-content: flex-end;  /* 🔑 image on right */
+  justify-content: flex-end;   /* stays on right */
+  align-items: center;         /* 🔑 vertical alignment fix */
 }
 
 .hero-image img {
-  max-width: 420px;
+  max-width: 360px;            /* 🔑 reduce dominance */
   width: 100%;
   height: auto;
   opacity: 0.95;
-  animation: float 6s ease-in-out infinite;
+  transform: translateY(10px); /* 🔑 lifts image slightly */
 }
+
 
 .hero h2 {
   font-size: 44px;
