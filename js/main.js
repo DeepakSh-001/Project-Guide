@@ -1,18 +1,40 @@
 /* ================= NAVBAR ================= */
-document.getElementById("navbar").innerHTML = `
-<header>
-  <div class="navbar">
-    <h1>MeetInsider</h1>
-    <nav>
-      <a href="how-to-use.html">How It Works</a>
-      <a href="about.html">About</a>
-      <a href="blog.html">Resources</a>
-      <a href="faq.html">FAQs</a>
-      <a href="login.html">Login</a>
-    </nav>
-  </div>
-</header>
-`;
+import { auth } from "./firebase.js";
+import {
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+const nav = document.getElementById("navLinks");
+
+if (nav) {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      nav.innerHTML = `
+        <a href="index.html">Home</a>
+        <a href="blog.html">Resources</a>
+        <a href="profile.html">${user.displayName || "Profile"}</a>
+        <a href="#" id="logoutBtn">Logout</a>
+      `;
+
+      const logoutBtn = document.getElementById("logoutBtn");
+      logoutBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        await signOut(auth);
+        localStorage.clear();
+        window.location.href = "login.html";
+      });
+
+    } else {
+      nav.innerHTML = `
+        <a href="index.html">Home</a>
+        <a href="blog.html">Resources</a>
+        <a href="login.html">Login</a>
+      `;
+    }
+  });
+}
+
 
 /* ================= FOOTER ================= */
 document.getElementById("footer").innerHTML = `
