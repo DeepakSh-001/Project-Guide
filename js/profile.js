@@ -81,3 +81,10 @@ function setupDashboardButton(role) {
         : "mentee-dashboard.html";
   };
 }
+
+/* LOGOUT */
+logoutLink.addEventListener("click", async () => {
+  await signOut(auth);
+  localStorage.clear();
+  window.location.href = "login.html";
+});
