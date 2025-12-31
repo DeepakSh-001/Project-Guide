@@ -23,6 +23,7 @@ if (navbar) {
               <a href="index.html">Home</a>
               <a href="blog.html">Resources</a>
               <a href="faq.html">FAQs</a>
+              <a href="about.html">About Us</a>
             </nav>
 
             <!-- RIGHT ACTIONS -->
@@ -84,6 +85,7 @@ if (avatarBtn && avatarMenu) {
             <nav class="nav-center">
               <a href="index.html">Home</a>
               <a href="blog.html">Resources</a>
+              <a href="about.html">About Us</a>
               <a href="login.html">Login</a>
             </nav>
           </div>
