@@ -5,31 +5,46 @@ import {
   signOut
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
-const nav = document.getElementById("navLinks");
+const navbar = document.getElementById("navbar");
 
-if (nav) {
+if (navbar) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      nav.innerHTML = `
-        <a href="index.html">Home</a>
-        <a href="blog.html">Resources</a>
-        <a href="profile.html">${user.displayName || "Profile"}</a>
-        <a href="#" id="logoutBtn">Logout</a>
+      navbar.innerHTML = `
+        <header>
+          <div class="navbar">
+            <h2 class="logo">MeetInsider</h2>
+            <nav>
+              <a href="index.html">Home</a>
+              <a href="blog.html">Resources</a>
+              <a href="profile.html">${user.displayName || "Profile"}</a>
+              <a href="#" id="logoutBtn">Logout</a>
+            </nav>
+          </div>
+        </header>
       `;
 
-      const logoutBtn = document.getElementById("logoutBtn");
-      logoutBtn.addEventListener("click", async (e) => {
-        e.preventDefault();
-        await signOut(auth);
-        localStorage.clear();
-        window.location.href = "login.html";
-      });
+      document
+        .getElementById("logoutBtn")
+        .addEventListener("click", async (e) => {
+          e.preventDefault();
+          await signOut(auth);
+          localStorage.clear();
+          window.location.href = "login.html";
+        });
 
     } else {
-      nav.innerHTML = `
-        <a href="index.html">Home</a>
-        <a href="blog.html">Resources</a>
-        <a href="login.html">Login</a>
+      navbar.innerHTML = `
+        <header>
+          <div class="navbar">
+            <h2 class="logo">MeetInsider</h2>
+            <nav>
+              <a href="index.html">Home</a>
+              <a href="blog.html">Resources</a>
+              <a href="login.html">Login</a>
+            </nav>
+          </div>
+        </header>
       `;
     }
   });
