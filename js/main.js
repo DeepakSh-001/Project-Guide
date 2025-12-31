@@ -17,6 +17,8 @@ if (navbar) {
             <nav>
               <a href="index.html">Home</a>
               <a href="blog.html">Resources</a>
+              <a href="faq.html">FAQs</a>
+              <a href="about.html">About Us</a>
               <a href="profile.html">${user.displayName || "Profile"}</a>
               <a href="#" id="logoutBtn">Logout</a>
             </nav>
@@ -41,6 +43,8 @@ if (navbar) {
             <nav>
               <a href="index.html">Home</a>
               <a href="blog.html">Resources</a>
+              <a href="faq.html">FAQs</a>
+              <a href="about.html">About Us</a>
               <a href="login.html">Login</a>
             </nav>
           </div>
