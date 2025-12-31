@@ -159,7 +159,7 @@ select.form-input {
 }
 
 /* SAME SIZE BUTTONS */
-.cta a {
+.cta {
   width: 260px;              /* equal width */
   height: 56px;              /* equal height */
   display: flex;
