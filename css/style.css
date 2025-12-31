@@ -224,23 +224,53 @@ body {
   max-width: 1200px;
   margin: 20px auto;
   padding: 70px 30px;
+
   display: flex;
-  justify-content: left;
-  text-align: center;
-  gap: 40px;
+  align-items: center;              /* vertical alignment */
+  justify-content: space-between;   /* text left, image right */
+  gap: 60px;
 
   background: var(--bg-section);
   border-radius: 28px;
 }
 
+/* LEFT TEXT */
+.hero-text {
+  flex: 1;
+  text-align: left;
+}
+
+/* RIGHT IMAGE */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-image img {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  opacity: 0.95;
+  animation: float 6s ease-in-out infinite;
+}
+
 .hero h2 {
   font-size: 44px;
+  line-height: 1.2;
 }
 
 #dynamic-word {
   color: var(--primary);
   border-bottom: 3px solid var(--primary);
 }
+
+/* subtle doodle animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
 
 /* ================= CTA ================= */
 .cta {
