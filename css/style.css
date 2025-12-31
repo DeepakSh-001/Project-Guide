@@ -221,7 +221,7 @@ body {
 
 /* ================= HERO ================= */
 .hero {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 40px auto;
   padding: 60px 40px;
 
@@ -304,7 +304,7 @@ body {
 /* ================= SECTIONS ================= */
 section {
   padding: 80px 40px;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 60px auto;
   background: var(--bg-section);
   border-radius: 28px;
@@ -343,7 +343,7 @@ footer {
 
 /* GRID LAYOUT FIX */
 .footer-grid {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;                 /* 🔥 centers grid */
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;
