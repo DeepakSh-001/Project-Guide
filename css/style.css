@@ -223,7 +223,7 @@ body {
 .hero {
   max-width: 1200px;
   margin: 40px auto;
-  padding: 70px 30px;
+  padding: 60px 40px;
 
   display: flex;
   align-items: center;
