@@ -222,29 +222,29 @@ body {
 /* ================= HERO ================= */
 .hero {
   max-width: 1200px;
-  margin: 20px auto;
+  margin: 40px auto;
   padding: 70px 30px;
 
   display: flex;
-  align-items: center;              /* vertical alignment */
-  justify-content: space-between;   /* text left, image right */
+  align-items: center;
+  justify-content: flex-end;   /* 🔑 shifts content block right */
   gap: 60px;
 
   background: var(--bg-section);
   border-radius: 28px;
 }
 
-/* LEFT TEXT */
+/* TEXT BLOCK */
 .hero-text {
   flex: 1;
-  text-align: left;
+  text-align: left;           /* 🔑 text stays left-aligned */
 }
 
-/* RIGHT IMAGE */
+/* IMAGE BLOCK */
 .hero-image {
   flex: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end;  /* 🔑 image on right */
 }
 
 .hero-image img {
@@ -265,11 +265,12 @@ body {
   border-bottom: 3px solid var(--primary);
 }
 
-/* subtle doodle animation */
+/* Doodle animation */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
 }
+
 
 
 /* ================= CTA ================= */
