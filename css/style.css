@@ -237,7 +237,7 @@ body {
 /* TEXT BLOCK */
 .hero-text {
   flex: 1;
-  text-align: center;           /* 🔑 text stays left-aligned */
+  text-align: left;           /* 🔑 text stays left-aligned */
 }
 
 /* IMAGE BLOCK */
@@ -245,7 +245,7 @@ body {
   flex: 1;
   display: flex;
   justify-content: flex-end;   /* stays on right */
-  align-items: center;         /* 🔑 vertical alignment fix */
+  align-items: right;         /* 🔑 vertical alignment fix */
 }
 
 .hero-image img {
