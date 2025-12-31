@@ -225,7 +225,7 @@ body {
   margin: 20px auto;
   padding: 70px 30px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   text-align: center;
   gap: 40px;
 
