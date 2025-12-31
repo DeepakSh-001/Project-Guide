@@ -149,48 +149,25 @@ body {
 }
 
 /* strike on homepage */
-.strike-wrapper {
-  position: relative;
-  display: inline-block;
-  padding: 0 4px;
-}
-
 .strike-line {
   position: absolute;
   left: 0;
   top: 55%;
-  height: 4px;
+  height: 3px;
   width: 0;
-  background-color: #e63946; /* red line */
+  background-color: #e63946;
   border-radius: 4px;
+  opacity: 0.9;
   transform: translateY(-50%);
-  animation: strike 2.8s ease-in-out infinite;
+  transition: width 0.6s ease, left 0.6s ease, opacity 0.3s;
 }
 
-@keyframes strike {
-  0% {
-    width: 0;
-    left: 0;
-    opacity: 1;
-  }
-  40% {
-    width: 100%;
-    left: 0;
-    opacity: 1;
-  }
-  65% {
-    width: 100%;
-    left: 0;
-    opacity: 1;
-  }
-  100% {
-    width: 0;
-    left: 100%;
-    opacity: 0;
-  }
+/* active state (JS will toggle this) */
+.strike-line.active {
+  width: 100%;
+  left: 0;
+  opacity: 1;
 }
-
-
 
 /* ================= LOGIN / REGISTER ================= */
 .login-wrapper {
