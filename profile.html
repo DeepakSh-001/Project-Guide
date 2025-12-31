@@ -1,53 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Profile | Project Guide</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Profile | MeetInsider</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-body{font-family:Inter;background:#f5f7fb;margin:0}
-header{background:#0b5ed7;color:#fff;padding:20px}
-.container{max-width:800px;margin:40px auto;background:#fff;padding:30px;border-radius:14px}
-.avatar{
-  width:90px;height:90px;border-radius:50%;
-  background:#0b5ed7;color:white;
-  display:flex;align-items:center;justify-content:center;
-  font-size:32px;font-weight:700
-}
-.badge{background:#eef3ff;padding:6px 10px;border-radius:8px;font-size:13px}
-</style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/profile.css">
 </head>
 
 <body>
 
-<header>
-  <h2>Project Guide</h2>
+<header class="topbar">
+  <h2>MeetInsider</h2>
 </header>
 
-<div class="container">
-  <div style="display:flex;gap:20px;align-items:center">
-    <div class="avatar">A</div>
-    <div>
-      <h3 id="name">User Name</h3>
-      <div class="badge" id="role">Mentor</div>
+<div class="profile-layout">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="profile-sidebar">
+    <div class="avatar-wrapper">
+      <img id="profilePic" src="https://via.placeholder.com/120" />
+      <label class="upload-btn">
+        Change
+        <input type="file" id="uploadPic" hidden />
+      </label>
     </div>
-  </div>
 
-  <hr>
+    <h3 id="userName">User Name</h3>
+    <span class="role-badge" id="userRole">Mentor</span>
 
-  <h4>Profile Details</h4>
-  <p><b>Email:</b> user@email.com</p>
-  <p><b>Expertise / Interest:</b> Career Guidance, Interview Prep</p>
+    <div class="info">
+      <p><b>Email:</b> <span id="email"></span></p>
+      <p><b>Expertise:</b> Career Guidance</p>
+    </div>
+  </aside>
 
-  <h4>Stats</h4>
-  <ul>
-    <li>Sessions completed: 0</li>
-    <li>Rating: ⭐⭐⭐⭐⭐</li>
-  </ul>
+  <!-- MAIN CONTENT -->
+  <main class="profile-main">
+
+    <div class="tabs">
+      <button class="tab active">Overview</button>
+      <button class="tab">Sessions</button>
+      <button class="tab">Blogs</button>
+      <button class="tab">Settings</button>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section class="card">
+      <h4>About</h4>
+      <p>
+        Passionate about helping students and professionals make confident
+        career decisions.
+      </p>
+    </section>
+
+    <!-- SESSIONS -->
+    <section class="card">
+      <h4>Sessions</h4>
+      <ul>
+        <li>Sessions completed: 0</li>
+        <li>Upcoming sessions: 0</li>
+      </ul>
+    </section>
+
+    <!-- BLOGS -->
+    <section class="card">
+      <h4>Blogs by you</h4>
+      <p>No blogs published yet.</p>
+      <button class="btn">Write your first blog</button>
+    </section>
+
+  </main>
 </div>
 
+<script src="js/profile.js"></script>
 </body>
 </html>
