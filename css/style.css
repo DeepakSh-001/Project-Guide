@@ -155,22 +155,35 @@ select.form-input {
   margin-top: 30px;
   display: flex;
   justify-content: center;
-  gap: 18px;
-  flex-wrap: wrap;
+  gap: 20px;
 }
 
+/* SAME SIZE BUTTONS */
 .cta a {
-  padding: 14px 22px;
+  width: 220px;              /* equal width */
+  height: 52px;              /* equal height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border-radius: 12px;
-  text-decoration: none;
   font-weight: 600;
+  text-decoration: none;
+  font-size: 15px;
 }
 
+/* PRIMARY */
+.btn-primary {
+  background: #0b5ed7;
+  color: white;
+}
 
+/* SECONDARY */
 .btn-secondary {
   background: #eef3ff;
   color: #0b5ed7;
 }
+
 
 /* ================= SECTIONS ================= */
 section {
