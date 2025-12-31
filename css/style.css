@@ -148,6 +148,49 @@ body {
   display: block;
 }
 
+/* strike on homepage */
+.strike-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0 4px;
+}
+
+.strike-line {
+  position: absolute;
+  left: 0;
+  top: 55%;
+  height: 4px;
+  width: 0;
+  background-color: #e63946; /* red line */
+  border-radius: 4px;
+  transform: translateY(-50%);
+  animation: strike 2.8s ease-in-out infinite;
+}
+
+@keyframes strike {
+  0% {
+    width: 0;
+    left: 0;
+    opacity: 1;
+  }
+  40% {
+    width: 100%;
+    left: 0;
+    opacity: 1;
+  }
+  65% {
+    width: 100%;
+    left: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+
 
 /* ================= LOGIN / REGISTER ================= */
 .login-wrapper {
