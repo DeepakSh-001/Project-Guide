@@ -262,15 +262,20 @@ body {
 }
 
 .btn-primary {
-  background: var(--primary);
+  background: #0d6efd;
   color: white;
+  padding: 14px 32px;
+  border-radius: 14px;
+  font-weight: 600;
 }
 
 .btn-secondary {
-  background: #eef3ff;
-  color: var(--primary);
+  background: #f1f5f9;
+  color: #0d6efd;
+  padding: 14px 32px;
+  border-radius: 14px;
+  font-weight: 600;
 }
-
 /* ================= SECTIONS ================= */
 section {
   padding: 80px 40px;
@@ -388,3 +393,18 @@ footer {
     flex-direction: column;
   }
 }
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 34px;
+  }
+
+  .hero-subtext {
+    font-size: 16px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+}
+
