@@ -227,7 +227,7 @@ body {
 
   display: flex;
   align-items: center;
-  justify-content: flex-end;   /* 🔑 shifts content block right */
+  justify-content: flex-start;   /* 🔑 shifts content block right */
   gap: 60px;
 
   background: var(--bg-section);
