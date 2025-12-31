@@ -56,13 +56,18 @@
 
     <!-- ROLE DROPDOWN -->
     <div class="form-group">
-      <label>Your Role</label>
-      <select id="registerRole" class="form-input" required>
-        <option value="" disabled selected>Select your role</option>
-        <option value="mentee">Mentee – Get Guidance</option>
-        <option value="mentor">Mentor – Offer Expertise</option>
-      </select>
-    </div>
+    <label>Your Role</label>
+
+  <div class="select-wrapper">
+    <i class="fa-solid fa-user-tag"></i>
+    <select id="registerRole" class="form-input" required>
+      <option value="" disabled selected>Select your role</option>
+      <option value="mentee">🎓 Mentee – Get Guidance</option>
+      <option value="mentor">🧠 Mentor – Offer Expertise</option>
+    </select>
+    <span class="chevron"></span>
+  </div>
+</div>
 
     <input type="text" id="regName" placeholder="Full Name" required>
     <input type="email" id="regEmail" placeholder="Email" required>
@@ -86,5 +91,6 @@
 
 </body>
 </html>
+
 
 
