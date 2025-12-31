@@ -148,26 +148,34 @@ body {
   display: block;
 }
 
-/* strike on homepage */
+/*  ------------- strike on homepage ----------------*/
+
+.strike-wrapper {
+  position: relative;
+  display: inline-block;   /* 🔑 CRITICAL */
+}
+
 .strike-line {
   position: absolute;
   left: 0;
-  top: 55%;
+  top: 50%;
   height: 3px;
-  width: 0;
+  width: 0;               /* 🔑 starts from 0 */
   background-color: #e63946;
   border-radius: 4px;
   opacity: 0.9;
   transform: translateY(-50%);
-  transition: width 0.6s ease, left 0.6s ease, opacity 0.3s;
+  pointer-events: none;
+  z-index: 2;
+
+  transition: width 0.6s ease;
 }
 
-/* active state (JS will toggle this) */
+/* activated by JS */
 .strike-line.active {
-  width: 100%;
-  left: 0;
-  opacity: 1;
+  width: 100%;            /* 🔑 ONLY text width */
 }
+
 
 /* ================= LOGIN / REGISTER ================= */
 .login-wrapper {
