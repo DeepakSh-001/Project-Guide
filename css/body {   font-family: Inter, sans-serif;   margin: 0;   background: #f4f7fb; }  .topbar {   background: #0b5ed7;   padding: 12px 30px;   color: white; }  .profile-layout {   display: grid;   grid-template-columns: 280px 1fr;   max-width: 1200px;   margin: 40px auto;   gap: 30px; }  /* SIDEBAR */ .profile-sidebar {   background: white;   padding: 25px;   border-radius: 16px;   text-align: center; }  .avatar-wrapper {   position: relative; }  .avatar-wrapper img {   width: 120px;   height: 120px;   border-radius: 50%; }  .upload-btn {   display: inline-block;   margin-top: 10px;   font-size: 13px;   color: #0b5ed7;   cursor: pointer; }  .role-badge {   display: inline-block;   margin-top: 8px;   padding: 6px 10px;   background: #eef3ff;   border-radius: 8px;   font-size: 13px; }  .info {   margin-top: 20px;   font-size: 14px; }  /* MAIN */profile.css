@@ -1,0 +1,101 @@
+body {
+  font-family: Inter, sans-serif;
+  margin: 0;
+  background: #f4f7fb;
+}
+
+.topbar {
+  background: #0b5ed7;
+  padding: 12px 30px;
+  color: white;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  max-width: 1200px;
+  margin: 40px auto;
+  gap: 30px;
+}
+
+/* SIDEBAR */
+.profile-sidebar {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.avatar-wrapper {
+  position: relative;
+}
+
+.avatar-wrapper img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.upload-btn {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #0b5ed7;
+  cursor: pointer;
+}
+
+.role-badge {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 10px;
+  background: #eef3ff;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.info {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* MAIN */
+.profile-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.tab {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #e9edf5;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tab.active {
+  background: #0b5ed7;
+  color: white;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+}
+
+.btn {
+  margin-top: 10px;
+  background: #0b5ed7;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
