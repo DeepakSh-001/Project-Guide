@@ -220,7 +220,6 @@ body {
 }
 
 /* ================= HERO ================= */
-/* ================= HERO ================= */
 .hero {
   max-width: 1200px;
   margin: 40px auto;
@@ -250,7 +249,7 @@ body {
 }
 
 .hero-image img {
-  max-width: 360px;
+  max-width: 460px;
   width: 100%;
   height: auto;
   opacity: 0.95;
