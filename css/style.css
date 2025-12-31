@@ -119,8 +119,8 @@ select.form-input {
 
 /* ================= HERO ================= */
 .hero {
-  max-width: 1200px;
-  margin: 40px auto;
+  max-width: 900px;
+  margin: 30px auto;
   padding: 90px 40px;
   display: flex;
   align-items: center;
