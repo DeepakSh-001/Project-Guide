@@ -1,7 +1,6 @@
 import { auth } from "./firebase.js";
-import {
-  onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import { onAuthStateChanged } from
+  "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
 import {
   getStorage,
@@ -10,100 +9,75 @@ import {
   getDownloadURL
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js";
 
-/* ELEMENTS */
 const profilePic = document.getElementById("profilePic");
 const uploadPic = document.getElementById("uploadPic");
 const userNameEl = document.getElementById("userName");
 const userRoleEl = document.getElementById("userRole");
 const emailEl = document.getElementById("email");
+const sessionInfo = document.getElementById("sessionInfo");
+const goDashboardBtn = document.getElementById("goDashboardBtn");
 
-/* FIREBASE STORAGE */
 const storage = getStorage();
 
-/* 🔐 AUTH GUARD */
-onAuthStateChanged(auth, async (user) => {
+/* AUTH GUARD */
+onAuthStateChanged(auth, (user) => {
   if (!user) {
     window.location.href = "login.html";
     return;
   }
 
-  /* BASIC INFO */
   userNameEl.textContent = user.displayName || "User";
   emailEl.textContent = user.email;
 
-  /* ROLE (TEMP: from localStorage / later backend) */
-  const role = localStorage.getItem("role") || "Mentor";
+  const role = localStorage.getItem("role") || "mentee";
   userRoleEl.textContent = role;
 
-  /* PROFILE PIC */
+  renderSessions(role);
+  setupDashboardButton(role);
+
   if (user.photoURL) {
     profilePic.src = user.photoURL;
   } else {
-    generateAvatar(user.displayName);
+    profilePic.src =
+      `https://ui-avatars.com/api/?name=${user.displayName}&background=0b5ed7&color=fff`;
   }
-
-  renderSessionInfo(role);
 });
 
-/* 🖼️ AVATAR FALLBACK */
-function generateAvatar(name = "U") {
-  const initial = name.charAt(0).toUpperCase();
-  profilePic.src =
-    `https://ui-avatars.com/api/?name=${initial}&background=0b5ed7&color=fff&size=120`;
-}
-
-/* 📤 UPLOAD PROFILE PICTURE */
+/* UPLOAD PROFILE PIC */
 uploadPic.addEventListener("change", async (e) => {
   const file = e.target.files[0];
   if (!file) return;
 
   const user = auth.currentUser;
-  if (!user) return;
-
   const picRef = ref(storage, `profile-pictures/${user.uid}`);
 
-  try {
-    await uploadBytes(picRef, file);
-    const url = await getDownloadURL(picRef);
-
-    profilePic.src = url;
-
-    // Optional: update auth photoURL later
-    console.log("Profile picture uploaded");
-  } catch (err) {
-    console.error("Upload failed:", err);
-  }
+  await uploadBytes(picRef, file);
+  profilePic.src = await getDownloadURL(picRef);
 });
 
-/* 🎭 ROLE-BASED SESSION INFO */
-function renderSessionInfo(role) {
-  const sessionSection = document.querySelector(".card ul");
+/* ROLE-BASED SESSION INFO */
+function renderSessions(role) {
+  sessionInfo.innerHTML = "";
 
-  if (!sessionSection) return;
-
-  sessionSection.innerHTML = "";
-
-  if (role === "Mentor") {
-    sessionSection.innerHTML = `
+  if (role === "mentor") {
+    sessionInfo.innerHTML = `
       <li>Sessions given: 0</li>
       <li>Total earnings: ₹0</li>
-      <li>Rating: ⭐⭐⭐⭐⭐</li>
     `;
   } else {
-    sessionSection.innerHTML = `
+    sessionInfo.innerHTML = `
       <li>Sessions taken: 0</li>
       <li>Upcoming sessions: 0</li>
     `;
   }
 }
 
-/* 🔀 TABS (BASIC SWITCHING) */
-document.querySelectorAll(".tab").forEach(tab => {
-  tab.addEventListener("click", () => {
-    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-    tab.classList.add("active");
-
-    // Later: show/hide sections
-    console.log("Tab clicked:", tab.innerText);
-  });
-});
+/* DASHBOARD BUTTON */
+function setupDashboardButton(role) {
+  goDashboardBtn.onclick = () => {
+    window.location.href =
+      role === "mentor"
+        ? "mentor-dashboard.html"
+        : "mentee-dashboard.html";
+  };
+}
