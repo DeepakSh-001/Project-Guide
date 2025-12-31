@@ -10,41 +10,68 @@ const navbar = document.getElementById("navbar");
 if (navbar) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
+      const name = user.displayName || "User";
+      const initial = name.charAt(0).toUpperCase();
+
       navbar.innerHTML = `
-        <header>
+        <header class="topbar">
           <div class="navbar">
-            <h2 class="logo">MeetInsider</h2>
-            <nav>
+            <div class="logo">MeetInsider</div>
+
+            <!-- CENTER NAV -->
+            <nav class="nav-center">
               <a href="index.html">Home</a>
               <a href="blog.html">Resources</a>
               <a href="faq.html">FAQs</a>
-              <a href="about.html">About Us</a>
-              <a href="profile.html">${user.displayName || "Profile"}</a>
-              <a href="#" id="logoutBtn">Logout</a>
             </nav>
+
+            <!-- RIGHT ACTIONS -->
+            <div class="nav-actions">
+              <button id="themeToggle" title="Toggle dark mode">🌙</button>
+
+              <div class="avatar-wrapper">
+                <div class="avatar">${initial}</div>
+
+                <div class="dropdown">
+                  <a href="profile.html">Profile</a>
+                  <a href="#" id="dashboardLink">Dashboard</a>
+                  <hr>
+                  <a href="#" id="logoutBtn">Logout</a>
+                </div>
+              </div>
+            </div>
           </div>
         </header>
       `;
 
-      document
-        .getElementById("logoutBtn")
-        .addEventListener("click", async (e) => {
-          e.preventDefault();
-          await signOut(auth);
-          localStorage.clear();
-          window.location.href = "login.html";
-        });
+      // Dashboard redirect
+      document.getElementById("dashboardLink").onclick = () => {
+        const role = localStorage.getItem("role");
+        window.location.href =
+          role === "mentor"
+            ? "mentor-dashboard.html"
+            : "mentee-dashboard.html";
+      };
+
+      // Logout
+      document.getElementById("logoutBtn").onclick = async (e) => {
+        e.preventDefault();
+        await signOut(auth);
+        localStorage.clear();
+        window.location.href = "login.html";
+      };
+
+      setupDarkMode();
 
     } else {
       navbar.innerHTML = `
-        <header>
+        <header class="topbar">
           <div class="navbar">
-            <h2 class="logo">MeetInsider</h2>
-            <nav>
+            <div class="logo">MeetInsider</div>
+
+            <nav class="nav-center">
               <a href="index.html">Home</a>
               <a href="blog.html">Resources</a>
-              <a href="faq.html">FAQs</a>
-              <a href="about.html">About Us</a>
               <a href="login.html">Login</a>
             </nav>
           </div>
@@ -52,6 +79,23 @@ if (navbar) {
       `;
     }
   });
+}
+
+/* ------------------------------ Dark Mode Logic   ---------------- */
+function setupDarkMode() {
+  const btn = document.getElementById("themeToggle");
+
+  if (!btn) return;
+
+  const isDark = localStorage.getItem("theme") === "dark";
+  document.body.classList.toggle("dark", isDark);
+  btn.textContent = isDark ? "☀️" : "🌙";
+
+  btn.onclick = () => {
+    const dark = document.body.classList.toggle("dark");
+    localStorage.setItem("theme", dark ? "dark" : "light");
+    btn.textContent = dark ? "☀️" : "🌙";
+  };
 }
 
 
