@@ -287,6 +287,52 @@ body {
   font-weight: 500;
 }
 
+/* ------ Running Mentor Strip ----------*/
+
+.mentor-strip {
+  padding: 50px 20px;
+  text-align: center;
+  background: transparent;
+}
+
+.strip-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: var(--text-muted);
+}
+
+.logo-marquee {
+  overflow: hidden;
+  position: relative;
+}
+
+.logo-track {
+  display: flex;
+  gap: 60px;
+  width: max-content;
+  animation: scroll 25s linear infinite;
+}
+
+.logo-track img {
+  height: 36px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.logo-track img:hover {
+  opacity: 1;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 
 /* ================= CTA ================= */
 .cta {
