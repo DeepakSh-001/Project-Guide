@@ -51,11 +51,26 @@ nav a{color:white;margin-left:20px;text-decoration:none;font-weight:600}
 const blogs = JSON.parse(localStorage.getItem("blogs") || "[]");
 const container = document.getElementById("blogs");
 
+function formatDate(ts) {
+  return new Date(ts).toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "short",
+    year: "numeric"
+  });
+}
+
 blogs.slice().reverse().forEach((blog, index) => {
   container.innerHTML += `
     <div class="card" onclick="openBlog(${index})">
       ${blog.image ? `<img src="${blog.image}">` : ``}
+
       <h3>${blog.title}</h3>
+
+      <p style="font-size:13px;color:#6b7280;margin:4px 0 10px">
+        by <b>${blog.authorName || "Unknown"}</b>
+        • ${blog.createdAt ? formatDate(blog.createdAt) : ""}
+      </p>
+
       <p>${blog.content.substring(0,120)}...</p>
     </div>
   `;
@@ -67,5 +82,7 @@ function openBlog(i){
 }
 </script>
 
+
 </body>
 </html>
+
