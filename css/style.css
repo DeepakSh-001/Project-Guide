@@ -335,7 +335,7 @@ section {
 
 
 /* ================= FOOTER ================= */
-/* ================= FOOTER ================= */
+
 footer {
   background: #0b1220;
   color: #cbd5e1;
@@ -404,22 +404,6 @@ footer {
   }
 }
 
-/* ================= MOBILE ================= */
-@media (max-width: 768px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-}
-
-
-/* ================= MOBILE ================= */
-@media (max-width: 900px) {
-  .hero {
-    flex-direction: column;
-  }
-}
-
 @media (max-width: 768px) {
   .hero-title {
     font-size: 34px;
@@ -434,21 +418,27 @@ footer {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 640px) {
   .hero {
     flex-direction: column;
     text-align: center;
   }
 
   .hero-text {
+    flex: none;
+    max-width: 100%;
     text-align: center;
   }
 
   .hero-image {
     justify-content: center;
+    margin-top: 40px;
   }
 
   .hero-image img {
-    max-width: 320px;
+    max-width: 280px;
+    transform: none;
   }
 }
+
+
