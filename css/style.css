@@ -244,9 +244,9 @@ body {
 
 /* IMAGE BLOCK */
 .hero-image {
-  flex: 1;
+  flex: 0;
   display: flex;
-  justify-content: flex-end;   /* stays on right */
+  justify-content: right;   /* stays on right */
   align-items: center;         /* 🔑 vertical alignment fix */
 }
 
