@@ -381,6 +381,12 @@ section {
   color: var(--text-muted);
 }
 
+.section-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, #2b3a55, transparent);
+  margin: 80px 0;
+}
+
 /* ================= CARDS ================= */
 .cards {
   display: grid;
