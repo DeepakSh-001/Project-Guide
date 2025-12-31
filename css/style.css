@@ -220,6 +220,7 @@ body {
 }
 
 /* ================= HERO ================= */
+/* ================= HERO ================= */
 .hero {
   max-width: 1200px;
   margin: 40px auto;
@@ -227,37 +228,34 @@ body {
 
   display: flex;
   align-items: center;
-  justify-content: space-between; /* 🔑 */
-
+  justify-content: space-between;
   gap: 60px;
 
   background: var(--bg-section);
   border-radius: 28px;
 }
 
-
 /* TEXT BLOCK */
 .hero-text {
-  flex: 0 0 520px;     /* 🔑 FIXES EVERYTHING */
+  flex: 0 0 520px;
   text-align: center;
 }
 
 /* IMAGE BLOCK */
 .hero-image {
-  flex: 0;
+  flex: 1;                     /* 🔑 REQUIRED */
   display: flex;
-  justify-content: right;   /* stays on right */
-  align-items: center;         /* 🔑 vertical alignment fix */
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .hero-image img {
-  max-width: 300px;            /* 🔑 reduce dominance */
+  max-width: 300px;
   width: 100%;
   height: auto;
   opacity: 0.95;
-  transform: translateY(10px); /* 🔑 lifts image slightly */
+  transform: translateY(10px);
 }
-
 
 .hero h2 {
   font-size: 44px;
@@ -268,13 +266,6 @@ body {
   color: var(--primary);
   border-bottom: 3px solid var(--primary);
 }
-
-/* Doodle animation */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
 
 
 /* ================= CTA ================= */
