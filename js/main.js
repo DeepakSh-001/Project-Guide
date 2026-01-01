@@ -149,7 +149,7 @@ document.getElementById("footer").innerHTML = `
 `;
 
 /* ================= DYNAMIC INSIDER TEXT ================= */
-const words = ["Insider", "Engineer", "Recruiter", "Alumni", "Hiring Manager"];
+const words = ["Insider", "Alumni", "Insider", "Alumni"];
 let index = 0;
 
 const dynamicWord = document.getElementById("dynamic-word");
