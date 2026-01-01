@@ -366,7 +366,7 @@ body {
 section {
   padding: 80px 40px;
   max-width: 1100px;
-  margin: 60px auto;
+  margin: 32px auto;
   background: var(--bg-section);
   border-radius: 28px;
 }
