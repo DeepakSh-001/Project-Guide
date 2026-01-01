@@ -231,7 +231,7 @@ body {
   gap: 60px;
 
   background: var(--bg-section);
-  border-radius: 10px;
+  border-radius: 0px;
 }
 
 /* TEXT BLOCK */
