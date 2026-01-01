@@ -1,6 +1,6 @@
 /* ================= THEME VARIABLES ================= */
 :root {
-  --bg-main: #f5f7fb;
+  --bg-main: #0f172a;
   --bg-section: #ffffff;
   --bg-card: #ffffff;
   --bg-muted: #f9fafb;
@@ -365,10 +365,10 @@ body {
 /* ================= SECTIONS ================= */
 section {
   padding: 80px 40px;
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 32px auto;
   background: var(--bg-section);
-  border-radius: 28px;
+  border-radius: 0px;
 }
 
 .sub {
@@ -410,7 +410,7 @@ footer {
 
 /* GRID LAYOUT FIX */
 .footer-grid {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;                 /* 🔥 centers grid */
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;
