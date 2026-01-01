@@ -221,7 +221,7 @@ body {
 
 /* ================= HERO ================= */
 .hero {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 40px auto;
   padding: 60px 40px;
 
@@ -231,7 +231,7 @@ body {
   gap: 60px;
 
   background: var(--bg-section);
-  border-radius: 28px;
+  border-radius: 10px;
 }
 
 /* TEXT BLOCK */
