@@ -64,30 +64,82 @@
         <button id="saveAboutBtn" class="primary-btn hidden">Save</button>
       </div>
 
-      <!-- EDUCATION & WORK -->
-      <div class="profile-card">
-        <div class="card-header">
-          <h4>Education & Work</h4>
-          <button id="editProfileBtn" class="edit-btn">✏️</button>
-        </div>
+      <section class="profile-content">
 
-        <div id="profileView">
-          <p><b>College:</b> <span id="collegeView"></span></p>
-          <p><b>Degree:</b> <span id="degreeView"></span></p>
-          <p><b>Company:</b> <span id="companyView"></span></p>
-          <p><b>Job Title:</b> <span id="jobView"></span></p>
-          <p><b>Location:</b> <span id="locationView"></span></p>
-        </div>
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active" data-tab="overview">Overview</button>
+    <button class="tab" data-tab="sessions">Sessions</button>
+    <button class="tab" data-tab="blogs">Blogs</button>
+    <button class="tab" data-tab="settings">Settings</button>
+  </div>
 
-        <div id="profileEdit" class="hidden">
-          <input id="collegeInput" class="profile-input" placeholder="College">
-          <input id="degreeInput" class="profile-input" placeholder="Degree">
-          <input id="companyInput" class="profile-input" placeholder="Company">
-          <input id="jobInput" class="profile-input" placeholder="Job Title">
-          <input id="locationInput" class="profile-input" placeholder="Location">
-          <button id="saveProfileBtn" class="primary-btn">Save</button>
-        </div>
+  <!-- OVERVIEW -->
+  <div id="overviewSection" class="tab-section">
+
+    <div class="profile-card">
+      <div class="card-header">
+        <h4>About</h4>
+        <button id="editAboutBtn" class="edit-btn">✏️</button>
       </div>
+
+      <p id="aboutText"></p>
+      <textarea id="aboutInput" class="profile-textarea hidden"></textarea>
+      <button id="saveAboutBtn" class="primary-btn hidden">Save</button>
+    </div>
+
+    <div class="profile-card">
+      <div class="card-header">
+        <h4>Education & Work</h4>
+        <button id="editProfileBtn" class="edit-btn">✏️</button>
+      </div>
+
+      <div id="profileView">
+        <p><b>College:</b> <span id="collegeView"></span></p>
+        <p><b>Degree:</b> <span id="degreeView"></span></p>
+        <p><b>Company:</b> <span id="companyView"></span></p>
+        <p><b>Job Title:</b> <span id="jobView"></span></p>
+        <p><b>Location:</b> <span id="locationView"></span></p>
+      </div>
+
+      <div id="profileEdit" class="hidden">
+        <input id="collegeInput" class="profile-input" placeholder="College">
+        <input id="degreeInput" class="profile-input" placeholder="Degree">
+        <input id="companyInput" class="profile-input" placeholder="Company">
+        <input id="jobInput" class="profile-input" placeholder="Job Title">
+        <input id="locationInput" class="profile-input" placeholder="Location">
+        <button id="saveProfileBtn" class="primary-btn">Save</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SESSIONS -->
+  <div id="sessionsSection" class="tab-section hidden">
+    <div class="profile-card">
+      <h4>Sessions</h4>
+      <ul id="sessionInfo"></ul>
+    </div>
+  </div>
+
+  <!-- BLOGS -->
+  <div id="blogsSection" class="tab-section hidden">
+    <div class="profile-card">
+      <h4>Your Blogs</h4>
+      <div id="blogsList">Loading...</div>
+    </div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="settingsSection" class="tab-section hidden">
+    <div class="profile-card">
+      <h4>Settings</h4>
+      <p>More settings coming soon.</p>
+    </div>
+  </div>
+
+</section>
+
 
       <!-- SESSIONS -->
       <div class="profile-card">
@@ -108,3 +160,4 @@
 
 </body>
 </html>
+
