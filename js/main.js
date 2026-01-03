@@ -176,3 +176,22 @@ setTimeout(() => {
   animateHero();
   setInterval(animateHero, 3000);
 }, 1000);
+
+/* --------------------- Book Session --------- */
+document.getElementById("payBtn").addEventListener("click", () => {
+  const service = document.getElementById("service").value;
+  const duration = document.getElementById("duration").value;
+  const date = document.getElementById("date").value;
+  const time = document.getElementById("time").value;
+
+  if (!date || !time) {
+    alert("Please select date and time");
+    return;
+  }
+
+  // MVP placeholder
+  alert(
+    `Proceeding to payment\n\nService: ${service}\nDuration: ${duration}\nDate: ${date}\nTime: ${time}`
+  );
+});
+
