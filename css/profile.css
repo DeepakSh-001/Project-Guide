@@ -76,9 +76,3 @@
 .hidden {
   display: none;
 }
-
-@media (max-width: 900px) {
-  .profile-grid {
-    grid-template-columns: 1fr;
-  }
-}
