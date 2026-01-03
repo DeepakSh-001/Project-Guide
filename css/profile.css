@@ -13,6 +13,7 @@
   max-width: 1200px;
   margin: auto;
   display: grid;
+  align-items: flex-start;
   grid-template-columns: 300px 1fr; /* LEFT | RIGHT */
   gap: 32px;
   align-items: start;
@@ -24,6 +25,7 @@
   background: #1f2937;
   padding: 32px 24px;
   border-radius: 20px;
+  align-self: flex-start;
   text-align: center;
   color: #e5e7eb;
 }
