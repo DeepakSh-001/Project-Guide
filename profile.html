@@ -1,55 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Profile | MeetInsider</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Global + Page CSS -->
-  <link rel="stylesheet" href="css/main.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/profile.css">
 </head>
 
 <body>
 
-  <!-- NAVBAR (Injected via main.js) -->
-  <header id="navbar"></header>
+  <!-- NAVBAR -->
+  <div id="navbar"></div>
 
-  <!-- PAGE CONTENT -->
-  <main class="page-wrapper">
+  <!-- PROFILE PAGE -->
+  <main class="profile-page">
 
-    <div class="profile-layout">
+    <div class="profile-container">
 
-      <!-- LEFT SIDEBAR -->
+      <!-- SIDEBAR -->
       <aside class="profile-sidebar">
-
         <div class="profile-avatar">
-          <img id="profilePic" alt="Profile Picture" />
-          <label class="profile-upload-btn">
+          <div class="avatar-circle" id="avatarText">D</div>
+          <label class="upload-btn">
             Change photo
-            <input type="file" id="uploadPic" hidden />
+            <input type="file" hidden>
           </label>
         </div>
 
-        <h3 id="userName">User Name</h3>
-        <span class="role-badge" id="userRole">Role</span>
+        <h3 id="userName">Deepak Sharma</h3>
+        <span class="role-badge">User</span>
 
-        <div class="profile-info">
-          <p><strong>Email:</strong> <span id="email"></span></p>
-        </div>
+        <p class="email">deepak@email.com</p>
 
-        <button id="goDashboardBtn" class="dashboard-btn">
-          Go to Dashboard →
-        </button>
+        <button class="dashboard-btn">Go to Dashboard →</button>
       </aside>
 
-      <!-- MAIN CONTENT -->
-      <section class="profile-main">
+      <!-- CONTENT -->
+      <section class="profile-content">
 
-        <!-- TABS -->
         <div class="tabs">
           <button class="tab active">Overview</button>
           <button class="tab">Sessions</button>
@@ -57,39 +51,33 @@
           <button class="tab">Settings</button>
         </div>
 
-        <!-- OVERVIEW -->
         <div class="profile-card">
           <h4>About</h4>
-          <p>
-            Tell others about your background, goals, and how MeetInsider helps you.
-          </p>
+          <p>This is your MeetInsider profile page.</p>
         </div>
 
-        <!-- SESSIONS -->
         <div class="profile-card">
           <h4>Sessions</h4>
-          <ul id="sessionInfo"></ul>
+          <p>No sessions booked yet.</p>
         </div>
 
-        <!-- BLOGS -->
         <div class="profile-card">
-          <h4>Your Blogs</h4>
-          <p>No blogs published yet.</p>
-          <button class="profile-btn">Write a blog</button>
+          <h4>Blogs</h4>
+          <button class="primary-btn">Write Blog</button>
         </div>
 
       </section>
+
     </div>
 
   </main>
 
-  <!-- FOOTER (Injected via main.js) -->
-  <footer id="footer"></footer>
+  <!-- FOOTER -->
+  <div id="footer"></div>
 
-  <!-- Scripts -->
-  <script type="module" src="js/firebase.js"></script>
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/profile.js"></script>
+  <!-- JS -->
+  <script src="js/main.js"></script>
+  <script src="js/profile.js"></script>
 
 </body>
 </html>
