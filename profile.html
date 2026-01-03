@@ -15,35 +15,44 @@
 
 <body>
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR (Injected via main.js) -->
   <div id="navbar"></div>
 
   <!-- PROFILE PAGE -->
   <main class="profile-page">
-
     <div class="profile-container">
 
-      <!-- SIDEBAR -->
+      <!-- LEFT SIDEBAR -->
       <aside class="profile-sidebar">
+
+        <!-- PROFILE PHOTO -->
         <div class="profile-avatar">
-          <div class="avatar-circle" id="avatarText">D</div>
+          <img
+            id="profilePic"
+            alt="Profile Picture"
+            class="avatar-circle"
+          />
           <label class="upload-btn">
             Change photo
-            <input type="file" hidden>
+            <input type="file" id="uploadPic" hidden />
           </label>
         </div>
 
-        <h3 id="userName">Deepak Sharma</h3>
-        <span class="role-badge">User</span>
+        <!-- USER DETAILS (Filled by profile.js) -->
+        <h3 id="userName">Loading...</h3>
+        <span class="role-badge" id="userRole">—</span>
 
-        <p class="email">deepak@email.com</p>
+        <p class="email" id="email"></p>
 
-        <button class="dashboard-btn">Go to Dashboard →</button>
+        <button id="goDashboardBtn" class="dashboard-btn">
+          Go to Dashboard →
+        </button>
       </aside>
 
-      <!-- CONTENT -->
+      <!-- RIGHT CONTENT -->
       <section class="profile-content">
 
+        <!-- TABS -->
         <div class="tabs">
           <button class="tab active">Overview</button>
           <button class="tab">Sessions</button>
@@ -51,34 +60,38 @@
           <button class="tab">Settings</button>
         </div>
 
+        <!-- OVERVIEW -->
         <div class="profile-card">
           <h4>About</h4>
-          <p>This is your MeetInsider profile page.</p>
+          <p>
+            Tell others about your background, goals, and how MeetInsider helps you.
+          </p>
         </div>
 
+        <!-- SESSIONS (Dynamic) -->
         <div class="profile-card">
           <h4>Sessions</h4>
-          <p>No sessions booked yet.</p>
+          <ul id="sessionInfo"></ul>
         </div>
 
+        <!-- BLOGS -->
         <div class="profile-card">
-          <h4>Blogs</h4>
+          <h4>Your Blogs</h4>
+          <p>No blogs published yet.</p>
           <button class="primary-btn">Write Blog</button>
         </div>
 
       </section>
 
     </div>
-
   </main>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (Injected via main.js) -->
   <div id="footer"></div>
 
   <!-- JS -->
- <script type="module" src="js/main.js"></script>
- <script src="js/profile.js"></script>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/profile.js"></script>
 
 </body>
 </html>
-
