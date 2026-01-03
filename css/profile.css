@@ -16,7 +16,7 @@
 /* LEFT */
 .profile-sidebar {
   background: #1f2937;
-  padding: 32px 24px;
+  padding: 28px;
   border-radius: 20px;
   text-align: center;
   color: #e5e7eb;
@@ -28,12 +28,11 @@
   border-radius: 50%;
   object-fit: cover;
   background: #0b5ed7;
-  margin: auto;
+  margin-bottom: 8px;
 }
 
 .upload-btn {
   display: block;
-  margin-top: 8px;
   font-size: 13px;
   color: #93c5fd;
   cursor: pointer;
@@ -54,21 +53,20 @@
 }
 
 .dashboard-btn {
-  margin-top: 28px;
+  margin-top: 24px;
   width: 100%;
   padding: 14px;
   background: #0b5ed7;
-  border-radius: 14px;
   color: white;
-  font-weight: 600;
   border: none;
+  border-radius: 14px;
+  font-weight: 600;
 }
 
 /* RIGHT */
 .profile-content {
   display: flex;
   flex-direction: column;
-  padding: 32px 24px;
   gap: 24px;
 }
 
@@ -83,18 +81,11 @@
   color: #e5e7eb;
   border-radius: 12px;
   border: none;
+  cursor: pointer;
 }
 
 .tab.active {
   background: #0b5ed7;
-}
-
-.tab-section {
-  display: block;
-}
-
-.tab-section.hidden {
-  display: none;
 }
 
 .profile-card {
@@ -107,19 +98,17 @@
 .card-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .edit-btn {
   background: none;
   border: none;
   color: #93c5fd;
-  font-size: 16px;
   cursor: pointer;
 }
 
-.profile-textarea,
-.profile-input {
+.profile-input,
+.profile-textarea {
   width: 100%;
   margin-top: 10px;
   padding: 12px;
