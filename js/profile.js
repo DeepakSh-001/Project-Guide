@@ -1,6 +1,8 @@
 import { auth } from "./firebase.js";
-import { onAuthStateChanged } from
-  "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import {
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
 import {
   getStorage,
@@ -9,6 +11,7 @@ import {
   getDownloadURL
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js";
 
+/* ELEMENTS */
 const profilePic = document.getElementById("profilePic");
 const uploadPic = document.getElementById("uploadPic");
 const userNameEl = document.getElementById("userName");
@@ -26,54 +29,72 @@ onAuthStateChanged(auth, (user) => {
     return;
   }
 
-  userNameEl.textContent = user.displayName || "User";
-  emailEl.textContent = user.email;
+  if (userNameEl) {
+    userNameEl.textContent = user.displayName || "User";
+  }
+
+  if (emailEl) {
+    emailEl.textContent = user.email || "";
+  }
 
   const role = localStorage.getItem("role") || "mentee";
-  userRoleEl.textContent = role;
+
+  if (userRoleEl) {
+    userRoleEl.textContent = role;
+  }
 
   renderSessions(role);
   setupDashboardButton(role);
 
-  if (user.photoURL) {
-    profilePic.src = user.photoURL;
-  } else {
-    profilePic.src =
-      `https://ui-avatars.com/api/?name=${user.displayName}&background=0b5ed7&color=fff`;
+  if (profilePic) {
+    profilePic.src = user.photoURL
+      ? user.photoURL
+      : `https://ui-avatars.com/api/?name=${encodeURIComponent(
+          user.displayName || "User"
+        )}&background=0b5ed7&color=fff`;
   }
 });
 
 /* UPLOAD PROFILE PIC */
-uploadPic.addEventListener("change", async (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
+if (uploadPic) {
+  uploadPic.addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-  const user = auth.currentUser;
-  const picRef = ref(storage, `profile-pictures/${user.uid}`);
+    const user = auth.currentUser;
+    if (!user) return;
 
-  await uploadBytes(picRef, file);
-  profilePic.src = await getDownloadURL(picRef);
-});
+    const picRef = ref(storage, `profile-pictures/${user.uid}`);
+
+    await uploadBytes(picRef, file);
+    const url = await getDownloadURL(picRef);
+
+    if (profilePic) {
+      profilePic.src = url;
+    }
+  });
+}
 
 /* ROLE-BASED SESSION INFO */
 function renderSessions(role) {
-  sessionInfo.innerHTML = "";
+  if (!sessionInfo) return;
 
-  if (role === "mentor") {
-    sessionInfo.innerHTML = `
-      <li>Sessions given: 0</li>
-      <li>Total earnings: ₹0</li>
-    `;
-  } else {
-    sessionInfo.innerHTML = `
-      <li>Sessions taken: 0</li>
-      <li>Upcoming sessions: 0</li>
-    `;
-  }
+  sessionInfo.innerHTML =
+    role === "mentor"
+      ? `
+        <li>Sessions given: 0</li>
+        <li>Total earnings: ₹0</li>
+      `
+      : `
+        <li>Sessions taken: 0</li>
+        <li>Upcoming sessions: 0</li>
+      `;
 }
 
 /* DASHBOARD BUTTON */
 function setupDashboardButton(role) {
+  if (!goDashboardBtn) return;
+
   goDashboardBtn.onclick = () => {
     window.location.href =
       role === "mentor"
@@ -82,9 +103,12 @@ function setupDashboardButton(role) {
   };
 }
 
-/* LOGOUT */
-logoutLink.addEventListener("click", async () => {
-  await signOut(auth);
-  localStorage.clear();
-  window.location.href = "index.html";
+/* LOGOUT (wait until navbar is injected) */
+document.addEventListener("click", async (e) => {
+  if (e.target && e.target.id === "logoutLink") {
+    e.preventDefault();
+    await signOut(auth);
+    localStorage.clear();
+    window.location.href = "index.html";
+  }
 });
