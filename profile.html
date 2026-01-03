@@ -12,35 +12,29 @@
 
 <body>
 
-<!-- NAVBAR -->
 <div id="navbar"></div>
 
 <main class="profile-page">
-  <div class="profile-container">
+  <div class="profile-grid">
 
-    <!-- LEFT SIDEBAR -->
-    <aside class="profile-sidebar">
-
-      <img id="profilePic" class="avatar-circle" alt="Profile">
-
-      <label class="upload-btn">
+    <!-- LEFT -->
+    <section class="profile-left">
+      <img id="profilePic" class="avatar" />
+      <label class="upload">
         Change photo
         <input type="file" id="uploadPic" hidden>
       </label>
 
-      <h3 id="userName">Loading...</h3>
-      <span class="role-badge" id="userRole"></span>
-      <p class="email" id="email"></p>
+      <h3 id="userName">Loading…</h3>
+      <span id="userRole" class="badge"></span>
+      <p id="email"></p>
 
-      <button id="goDashboardBtn" class="dashboard-btn">
-        Go to Dashboard →
-      </button>
-    </aside>
+      <button id="goDashboardBtn">Go to Dashboard →</button>
+    </section>
 
-    <!-- RIGHT CONTENT -->
-    <section class="profile-content">
+    <!-- RIGHT -->
+    <section class="profile-right">
 
-      <!-- TABS -->
       <div class="tabs">
         <button class="tab active" data-tab="overview">Overview</button>
         <button class="tab" data-tab="sessions">Sessions</button>
@@ -49,81 +43,70 @@
       </div>
 
       <!-- OVERVIEW -->
-      <div id="overview" class="tab-section">
+      <div id="overview" class="tab-pane">
 
-        <!-- ABOUT -->
-        <div class="profile-card">
-          <div class="card-header">
+        <div class="card">
+          <div class="card-head">
             <h4>About</h4>
-            <button id="editAboutBtn" class="edit-btn">✏️</button>
+            <button id="editAbout">✏️</button>
           </div>
 
-          <p id="aboutView"></p>
+          <p id="aboutView">No description yet.</p>
 
-          <textarea id="aboutInput" class="hidden profile-textarea"></textarea>
-          <button id="saveAboutBtn" class="hidden primary-btn">Save</button>
+          <textarea id="aboutInput" class="hidden"></textarea>
+          <button id="saveAbout" class="hidden">Save</button>
         </div>
 
-        <!-- EDUCATION & WORK -->
-        <div class="profile-card">
-          <div class="card-header">
+        <div class="card">
+          <div class="card-head">
             <h4>Education & Employment</h4>
-            <button id="editProfileBtn" class="edit-btn">✏️</button>
+            <button id="editProfile">✏️</button>
           </div>
 
           <div id="profileView">
-            <p><b>College:</b> <span id="collegeView"></span></p>
-            <p><b>Degree:</b> <span id="degreeView"></span></p>
-            <p><b>Company:</b> <span id="companyView"></span></p>
-            <p><b>Job Title:</b> <span id="jobView"></span></p>
-            <p><b>Location:</b> <span id="locationView"></span></p>
+            <p>College: <span id="collegeView"></span></p>
+            <p>Degree: <span id="degreeView"></span></p>
+            <p>Company: <span id="companyView"></span></p>
+            <p>Job Title: <span id="jobView"></span></p>
+            <p>Location: <span id="locationView"></span></p>
           </div>
 
           <div id="profileEdit" class="hidden">
-            <input id="collegeInput" class="profile-input" placeholder="College">
-            <input id="degreeInput" class="profile-input" placeholder="Degree">
-            <input id="companyInput" class="profile-input" placeholder="Company">
-            <input id="jobInput" class="profile-input" placeholder="Job Title">
-            <input id="locationInput" class="profile-input" placeholder="Location">
-            <button id="saveProfileBtn" class="primary-btn">Save</button>
+            <input id="collegeInput" placeholder="College">
+            <input id="degreeInput" placeholder="Degree">
+            <input id="companyInput" placeholder="Company">
+            <input id="jobInput" placeholder="Job Title">
+            <input id="locationInput" placeholder="Location">
+            <button id="saveProfile">Save</button>
           </div>
         </div>
 
       </div>
 
-      <!-- SESSIONS -->
-      <div id="sessions" class="tab-section hidden">
-        <div class="profile-card">
-          <h4>Sessions</h4>
+      <div id="sessions" class="tab-pane hidden">
+        <div class="card">
           <ul id="sessionInfo"></ul>
         </div>
       </div>
 
-      <!-- BLOGS -->
-      <div id="blogs" class="tab-section hidden">
-        <div class="profile-card">
-          <h4>Your Blogs</h4>
+      <div id="blogs" class="tab-pane hidden">
+        <div class="card">
           <div id="blogsList"></div>
         </div>
       </div>
 
-      <!-- SETTINGS -->
-      <div id="settings" class="tab-section hidden">
-        <div class="profile-card">
-          <h4>Settings</h4>
-          <p>Settings coming soon.</p>
-        </div>
+      <div id="settings" class="tab-pane hidden">
+        <div class="card">Settings coming soon.</div>
       </div>
 
     </section>
+
   </div>
 </main>
 
-<!-- FOOTER -->
 <div id="footer"></div>
 
 <script type="module" src="js/main.js"></script>
 <script type="module" src="js/profile.js"></script>
-
 </body>
 </html>
