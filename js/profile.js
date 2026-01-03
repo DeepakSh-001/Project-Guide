@@ -1,7 +1,6 @@
 import { auth } from "./firebase.js";
 import {
-  onAuthStateChanged,
-  signOut
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
 import {
@@ -9,6 +8,10 @@ import {
   doc,
   getDoc,
   setDoc,
+  collection,
+  query,
+  where,
+  getDocs,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
@@ -22,56 +25,45 @@ import {
 const db = getFirestore();
 const storage = getStorage();
 
-/* ELEMENTS */
-const profilePic = document.getElementById("profilePic");
-const uploadPic = document.getElementById("uploadPic");
-const userNameEl = document.getElementById("userName");
-const userRoleEl = document.getElementById("userRole");
-const emailEl = document.getElementById("email");
-const sessionInfo = document.getElementById("sessionInfo");
+/* ================= TAB SWITCHING ================= */
 
-/* ABOUT */
-const aboutText = document.getElementById("aboutText");
-const aboutInput = document.getElementById("aboutInput");
-const editAboutBtn = document.getElementById("editAboutBtn");
-const saveAboutBtn = document.getElementById("saveAboutBtn");
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".tab-section").forEach(s => s.classList.add("hidden"));
 
-/* PROFILE */
-const profileView = document.getElementById("profileView");
-const profileEdit = document.getElementById("profileEdit");
-const editProfileBtn = document.getElementById("editProfileBtn");
-const saveProfileBtn = document.getElementById("saveProfileBtn");
+    tab.classList.add("active");
+    document.getElementById(`${tab.dataset.tab}Section`).classList.remove("hidden");
+  });
+});
 
-const collegeInput = document.getElementById("collegeInput");
-const degreeInput = document.getElementById("degreeInput");
-const companyInput = document.getElementById("companyInput");
-const jobInput = document.getElementById("jobInput");
-const locationInput = document.getElementById("locationInput");
+/* ================= AUTH ================= */
 
-const collegeView = document.getElementById("collegeView");
-const degreeView = document.getElementById("degreeView");
-const companyView = document.getElementById("companyView");
-const jobView = document.getElementById("jobView");
-const locationView = document.getElementById("locationView");
-
-/* AUTH */
 onAuthStateChanged(auth, async (user) => {
   if (!user) {
     window.location.href = "login.html";
     return;
   }
 
-  userNameEl.textContent = user.displayName || "User";
-  emailEl.textContent = user.email;
-  userRoleEl.textContent = localStorage.getItem("role") || "mentee";
+  // BASIC INFO
+  document.getElementById("userName").textContent = user.displayName || "User";
+  document.getElementById("email").textContent = user.email;
+  document.getElementById("userRole").textContent = localStorage.getItem("role") || "mentee";
 
+  // PROFILE IMAGE
+  const profilePic = document.getElementById("profilePic");
   profilePic.src = user.photoURL ||
     `https://ui-avatars.com/api/?name=${user.displayName}&background=0b5ed7&color=fff`;
 
-  const snap = await getDoc(doc(db, "users", user.uid));
+  // LOAD PROFILE DATA
+  const docRef = doc(db, "users", user.uid);
+  const snap = await getDoc(docRef);
+
   if (snap.exists()) {
     const d = snap.data();
-    aboutText.textContent = d.about || "";
+
+    document.getElementById("aboutText").textContent = d.about || "";
+
     collegeView.textContent = d.college || "";
     degreeView.textContent = d.degree || "";
     companyView.textContent = d.company || "";
@@ -79,24 +71,11 @@ onAuthStateChanged(auth, async (user) => {
     locationView.textContent = d.location || "";
   }
 
-  sessionInfo.innerHTML = `
-    <li>Sessions taken: 0</li>
-    <li>Upcoming sessions: 0</li>
-  `;
+  loadBlogs(user.uid);
 });
 
-/* UPLOAD PHOTO */
-uploadPic.addEventListener("change", async (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
+/* ================= ABOUT EDIT ================= */
 
-  const user = auth.currentUser;
-  const picRef = ref(storage, `profile-pictures/${user.uid}`);
-  await uploadBytes(picRef, file);
-  profilePic.src = await getDownloadURL(picRef);
-});
-
-/* ABOUT EDIT */
 editAboutBtn.onclick = () => {
   aboutInput.value = aboutText.textContent;
   aboutText.classList.add("hidden");
@@ -106,8 +85,10 @@ editAboutBtn.onclick = () => {
 
 saveAboutBtn.onclick = async () => {
   const user = auth.currentUser;
+  if (!user) return;
+
   await setDoc(doc(db, "users", user.uid), {
-    about: aboutInput.value,
+    about: aboutInput.value.trim(),
     updatedAt: serverTimestamp()
   }, { merge: true });
 
@@ -117,14 +98,22 @@ saveAboutBtn.onclick = async () => {
   saveAboutBtn.classList.add("hidden");
 };
 
-/* PROFILE EDIT */
+/* ================= PROFILE EDIT ================= */
+
 editProfileBtn.onclick = () => {
+  collegeInput.value = collegeView.textContent;
+  degreeInput.value = degreeView.textContent;
+  companyInput.value = companyView.textContent;
+  jobInput.value = jobView.textContent;
+  locationInput.value = locationView.textContent;
+
   profileView.classList.add("hidden");
   profileEdit.classList.remove("hidden");
 };
 
 saveProfileBtn.onclick = async () => {
   const user = auth.currentUser;
+  if (!user) return;
 
   const data = {
     college: collegeInput.value,
@@ -146,3 +135,46 @@ saveProfileBtn.onclick = async () => {
   profileEdit.classList.add("hidden");
   profileView.classList.remove("hidden");
 };
+
+/* ================= BLOGS ================= */
+
+async function loadBlogs(uid) {
+  const blogsList = document.getElementById("blogsList");
+  blogsList.innerHTML = "";
+
+  const q = query(
+    collection(db, "blogs"),
+    where("authorId", "==", uid)
+  );
+
+  const snapshot = await getDocs(q);
+
+  if (snapshot.empty) {
+    blogsList.innerHTML = "<p>No blogs written yet.</p>";
+    return;
+  }
+
+  snapshot.forEach(doc => {
+    const blog = doc.data();
+    const div = document.createElement("div");
+    div.className = "profile-card";
+    div.innerHTML = `
+      <h4>${blog.title}</h4>
+      <p>${blog.excerpt || ""}</p>
+    `;
+    blogsList.appendChild(div);
+  });
+}
+
+/* ================= PHOTO UPLOAD ================= */
+
+uploadPic.addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const user = auth.currentUser;
+  const picRef = ref(storage, `profile-pictures/${user.uid}`);
+
+  await uploadBytes(picRef, file);
+  profilePic.src = await getDownloadURL(picRef);
+});
