@@ -15,94 +15,96 @@
 
 <body>
 
-  <!-- NAVBAR (Injected via main.js) -->
-  <div id="navbar"></div>
+<!-- NAVBAR -->
+<div id="navbar"></div>
 
-  <!-- PROFILE PAGE -->
-  <main class="profile-page">
-    <div class="profile-container">
+<main class="profile-page">
+  <div class="profile-container">
 
-      <!-- LEFT SIDEBAR -->
-      <aside class="profile-sidebar">
+    <!-- LEFT SIDEBAR -->
+    <aside class="profile-sidebar">
 
-        <!-- PROFILE PHOTO -->
-        <div class="profile-avatar">
-          <img
-            id="profilePic"
-            alt="Profile Picture"
-            class="avatar-circle"
-          />
-          <label class="upload-btn">
-            Change photo
-            <input type="file" id="uploadPic" hidden />
-          </label>
-        </div>
+      <div class="profile-avatar">
+        <img id="profilePic" class="avatar-circle" alt="Profile Picture">
+        <label class="upload-btn">
+          Change photo
+          <input type="file" id="uploadPic" hidden>
+        </label>
+      </div>
 
-        <!-- USER DETAILS (Filled by profile.js) -->
-        <h3 id="userName">Loading...</h3>
-        <span class="role-badge" id="userRole">—</span>
+      <h3 id="userName">Loading...</h3>
+      <span class="role-badge" id="userRole"></span>
+      <p class="email" id="email"></p>
 
-        <p class="email" id="email"></p>
+      <button id="goDashboardBtn" class="dashboard-btn">
+        Go to Dashboard →
+      </button>
+    </aside>
 
-        <button id="goDashboardBtn" class="dashboard-btn">
-          Go to Dashboard →
-        </button>
-      </aside>
+    <!-- RIGHT CONTENT -->
+    <section class="profile-content">
 
-      <!-- RIGHT CONTENT -->
-      <section class="profile-content">
+      <div class="tabs">
+        <button class="tab active">Overview</button>
+        <button class="tab">Sessions</button>
+        <button class="tab">Blogs</button>
+        <button class="tab">Settings</button>
+      </div>
 
-        <!-- TABS -->
-        <div class="tabs">
-          <button class="tab active">Overview</button>
-          <button class="tab">Sessions</button>
-          <button class="tab">Blogs</button>
-          <button class="tab">Settings</button>
-        </div>
-
-        <!-- OVERVIEW -->
-        <div class="profile-card">
+      <!-- ABOUT -->
+      <div class="profile-card">
+        <div class="card-header">
           <h4>About</h4>
-          <p>
-            Tell others about your background, goals, and how MeetInsider helps you.
-          </p>
+          <button id="editAboutBtn" class="edit-btn">✏️</button>
         </div>
 
-        <!-- SESSIONS (Dynamic) -->
-        <div class="profile-card">
-            <h4>About</h4>
+        <p id="aboutText"></p>
 
-            <textarea
-              id="aboutInput"
-            class="profile-textarea"
-            placeholder="Tell others about your background, goals, and how MeetInsider helps you..."
-            ></textarea>
+        <textarea id="aboutInput" class="profile-textarea hidden"></textarea>
+        <button id="saveAboutBtn" class="primary-btn hidden">Save</button>
+      </div>
 
-            <button id="saveAboutBtn" class="primary-btn">
-            Save About
-            </button>
+      <!-- EDUCATION & WORK -->
+      <div class="profile-card">
+        <div class="card-header">
+          <h4>Education & Work</h4>
+          <button id="editProfileBtn" class="edit-btn">✏️</button>
         </div>
 
-
-        <!-- BLOGS -->
-        <div class="profile-card">
-          <h4>Your Blogs</h4>
-          <p>No blogs published yet.</p>
-          <button class="primary-btn">Write Blog</button>
+        <div id="profileView">
+          <p><b>College:</b> <span id="collegeView"></span></p>
+          <p><b>Degree:</b> <span id="degreeView"></span></p>
+          <p><b>Company:</b> <span id="companyView"></span></p>
+          <p><b>Job Title:</b> <span id="jobView"></span></p>
+          <p><b>Location:</b> <span id="locationView"></span></p>
         </div>
 
-      </section>
+        <div id="profileEdit" class="hidden">
+          <input id="collegeInput" class="profile-input" placeholder="College">
+          <input id="degreeInput" class="profile-input" placeholder="Degree">
+          <input id="companyInput" class="profile-input" placeholder="Company">
+          <input id="jobInput" class="profile-input" placeholder="Job Title">
+          <input id="locationInput" class="profile-input" placeholder="Location">
+          <button id="saveProfileBtn" class="primary-btn">Save</button>
+        </div>
+      </div>
 
-    </div>
-  </main>
+      <!-- SESSIONS -->
+      <div class="profile-card">
+        <h4>Sessions</h4>
+        <ul id="sessionInfo"></ul>
+      </div>
 
-  <!-- FOOTER (Injected via main.js) -->
-  <div id="footer"></div>
+    </section>
+  </div>
+</main>
 
-  <!-- JS -->
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/profile.js"></script>
+<!-- FOOTER -->
+<div id="footer"></div>
+
+<!-- JS -->
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/profile.js"></script>
 
 </body>
 </html>
-
