@@ -87,3 +87,99 @@
   outline: none;
   box-shadow: 0 0 0 4px rgba(11, 94, 215, 0.3);
 }
+
+/* ================= SEND BUTTON ================= */
+
+.send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  background: linear-gradient(135deg, var(--primary), #094db4);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+
+  box-shadow: 0 10px 20px rgba(11,94,215,.25);
+  transition: all .25s ease;
+  position: relative;
+}
+
+.send-btn:hover {
+  transform: translateY(-2px);
+}
+
+.send-btn:disabled {
+  cursor: not-allowed;
+  opacity: .8;
+}
+
+/* Loader */
+.btn-loader {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  display: none;
+  animation: spin .8s linear infinite;
+}
+
+.send-btn.loading .btn-text {
+  display: none;
+}
+
+.send-btn.loading .btn-loader {
+  display: inline-block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ================= SUCCESS MODAL ================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-box {
+  background: var(--bg-card);
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 360px;
+}
+
+.modal-box i {
+  font-size: 48px;
+  color: #22c55e;
+  margin-bottom: 12px;
+}
+
+.modal-box button {
+  margin-top: 20px;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  background: var(--primary);
+  color: white;
+  cursor: pointer;
+}
+
