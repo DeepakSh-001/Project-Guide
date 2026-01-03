@@ -14,89 +14,78 @@
 
 <div id="navbar"></div>
 
-<main class="profile-page">
-  <div class="profile-grid">
+<main class="profile-wrapper">
 
-    <!-- LEFT -->
-    <section class="profile-left">
-      <img id="profilePic" class="avatar" />
+  <!-- LEFT -->
+  <aside class="profile-left">
+    <img id="profilePic" class="avatar">
+    <label class="edit-photo">
+      Change photo
+      <input type="file" id="uploadPic" hidden>
+    </label>
 
-      <label class="upload">
-        Change photo
-        <input type="file" id="uploadPic" hidden>
-      </label>
+    <h3 id="userName"></h3>
+    <span id="userRole" class="badge"></span>
+    <p id="email"></p>
 
-      <h3 id="userName">Loading...</h3>
-      <span id="userRole" class="badge"></span>
-      <p id="email"></p>
+    <button id="goDashboardBtn">Go to Dashboard →</button>
+  </aside>
 
-      <button id="goDashboardBtn">Go to Dashboard →</button>
-    </section>
+  <!-- RIGHT -->
+  <section class="profile-right">
 
-    <!-- RIGHT -->
-    <section class="profile-right">
+    <div class="tabs">
+      <button class="tab active" data-tab="details">Personal Details</button>
+      <button class="tab" data-tab="sessions">Upcoming Sessions</button>
+      <button class="tab" data-tab="blogs">Blogs</button>
+      <button class="tab" data-tab="settings">Settings</button>
+    </div>
 
-      <div class="tabs">
-        <button class="tab active" data-tab="overview">Overview</button>
-        <button class="tab" data-tab="sessions">Sessions</button>
-        <button class="tab" data-tab="blogs">Blogs</button>
-        <button class="tab" data-tab="settings">Settings</button>
-      </div>
+    <!-- PERSONAL DETAILS -->
+    <div id="details" class="tab-section">
+      <h4>Personal Information</h4>
 
-      <!-- OVERVIEW -->
-      <div id="overview" class="tab-pane">
+      <input id="collegeInput" placeholder="College">
+      <input id="companyInput" placeholder="Company">
+      <input id="jobTitleInput" placeholder="Job Title">
 
-        <!-- ABOUT -->
-        <div class="card">
-          <div class="card-head">
-            <h4>About</h4>
-            <button id="editAbout">✏️</button>
-          </div>
+      <label>Interests</label>
+      <select id="interestsInput" multiple>
+        <option>Data Analytics</option>
+        <option>SQL</option>
+        <option>Python</option>
+        <option>Product Management</option>
+        <option>Career Growth</option>
+      </select>
 
-          <p id="aboutView">No description yet.</p>
+      <button id="saveDetailsBtn">Save Details</button>
+    </div>
 
-          <textarea id="aboutInput" class="hidden"></textarea>
-          <button id="saveAbout" class="hidden">Save</button>
-        </div>
+    <!-- SESSIONS -->
+    <div id="sessions" class="tab-section hidden">
+      <h4>Upcoming Sessions</h4>
+      <ul id="sessionsList"></ul>
+    </div>
 
-        <!-- EDUCATION & EMPLOYMENT -->
-        <div class="card">
-          <div class="card-head">
-            <h4>Education & Employment</h4>
-            <button id="editProfile">✏️</button>
-          </div>
+    <!-- BLOGS -->
+    <div id="blogs" class="tab-section hidden">
+      <h4>Your Blogs</h4>
+      <div id="blogsList"></div>
+    </div>
 
-          <div id="profileView">
-            <p>College: <span id="collegeView"></span></p>
-            <p>Degree: <span id="degreeView"></span></p>
-            <p>Company: <span id="companyView"></span></p>
-            <p>Job Title: <span id="jobView"></span></p>
-            <p>Location: <span id="locationView"></span></p>
-          </div>
+    <!-- SETTINGS -->
+    <div id="settings" class="tab-section hidden">
+      <h4>Settings</h4>
+      <p>Coming soon</p>
+    </div>
 
-          <div id="profileEdit" class="hidden">
-            <input id="collegeInput" placeholder="College">
-            <input id="degreeInput" placeholder="Degree">
-            <input id="companyInput" placeholder="Company">
-            <input id="jobInput" placeholder="Job Title">
-            <input id="locationInput" placeholder="Location">
-            <button id="saveProfile">Save</button>
-          </div>
-        </div>
-
-      </div>
-
-      <div id="sessions" class="tab-pane hidden"></div>
-      <div id="blogs" class="tab-pane hidden"></div>
-      <div id="settings" class="tab-pane hidden"></div>
-
-    </section>
-  </div>
+  </section>
 </main>
 
 <div id="footer"></div>
 
 <script type="module" src="js/main.js"></script>
 <script type="module" src="js/profile.js"></script>
+
 </body>
 </html>
