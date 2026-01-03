@@ -89,6 +89,14 @@
   background: #0b5ed7;
 }
 
+.tab-section {
+  display: block;
+}
+
+.tab-section.hidden {
+  display: none;
+}
+
 .profile-card {
   background: #1f2937;
   padding: 26px;
