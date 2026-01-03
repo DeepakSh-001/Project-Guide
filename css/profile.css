@@ -1,69 +1,47 @@
-body {
-  font-family: Inter, sans-serif;
-  margin: 0;
-  background: #e5e7eb;
+/* ================= PROFILE PAGE ONLY ================= */
+
+/* PAGE WRAPPER (background isolated from navbar/footer) */
+.page-wrapper {
+  background: var(--bg-main);
+  padding-top: 90px; /* navbar height */
+  padding-bottom: 60px;
 }
 
-.topbar {
-  background: #0b5ed7;
-  padding: 10px 30px;
-  color: white;
-}
-
-.navbar {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  margin: 0;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin-left: 20px;
-  font-weight: 600;
-}
-
-nav a.active {
-  text-decoration: underline;
-}
-
-
+/* LAYOUT */
 .profile-layout {
   display: grid;
   grid-template-columns: 280px 1fr;
   max-width: 1200px;
-  margin: 40px auto;
+  margin: 0 auto;
   gap: 30px;
 }
 
-/* SIDEBAR */
+/* ================= SIDEBAR ================= */
 .profile-sidebar {
-  background: white;
+  background: var(--bg-card);
   padding: 25px;
   border-radius: 16px;
   text-align: center;
 }
 
-.avatar-wrapper img {
+/* renamed to avoid navbar collision */
+.profile-avatar img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
+  object-fit: cover;
+  background: #dbeafe;
 }
 
-.upload-btn {
+.profile-upload-btn {
   display: inline-block;
   margin-top: 8px;
   font-size: 13px;
-  color: #0b5ed7;
+  color: var(--primary);
   cursor: pointer;
 }
 
+/* ROLE BADGE */
 .role-badge {
   display: inline-block;
   margin-top: 10px;
@@ -71,63 +49,80 @@ nav a.active {
   background: #eef3ff;
   border-radius: 8px;
   font-size: 13px;
+  font-weight: 600;
 }
 
-.info {
+/* INFO */
+.profile-info {
   margin-top: 20px;
   font-size: 14px;
+  color: var(--text-muted);
 }
 
+/* DASHBOARD BUTTON */
 .dashboard-btn {
   margin-top: 25px;
   width: 100%;
   padding: 12px;
-  background: #0b5ed7;
-  color: white;
+  background: var(--primary);
+  color: #ffffff;
   border: none;
   border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
 }
 
-/* MAIN */
+/* ================= MAIN CONTENT ================= */
 .profile-main {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
+/* TABS */
 .tabs {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .tab {
   padding: 10px 16px;
   border-radius: 10px;
   border: none;
-  background: #e9edf5;
+  background: var(--bg-muted);
   font-weight: 600;
   cursor: pointer;
+  color: var(--text-main);
 }
 
 .tab.active {
-  background: #0b5ed7;
-  color: white;
+  background: var(--primary);
+  color: #ffffff;
 }
 
-.card {
-  background: white;
+/* PROFILE CARDS (scoped) */
+.profile-card {
+  background: var(--bg-card);
   padding: 25px;
   border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
 }
 
-.btn {
+/* PROFILE BUTTON */
+.profile-btn {
   margin-top: 10px;
-  background: #0b5ed7;
-  color: white;
+  background: var(--primary);
+  color: #ffffff;
   border: none;
   padding: 10px 16px;
   border-radius: 10px;
   cursor: pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+  }
 }
