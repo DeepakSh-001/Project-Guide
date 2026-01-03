@@ -20,12 +20,13 @@
     <!-- LEFT -->
     <section class="profile-left">
       <img id="profilePic" class="avatar" />
+
       <label class="upload">
         Change photo
         <input type="file" id="uploadPic" hidden>
       </label>
 
-      <h3 id="userName">Loading…</h3>
+      <h3 id="userName">Loading...</h3>
       <span id="userRole" class="badge"></span>
       <p id="email"></p>
 
@@ -45,6 +46,7 @@
       <!-- OVERVIEW -->
       <div id="overview" class="tab-pane">
 
+        <!-- ABOUT -->
         <div class="card">
           <div class="card-head">
             <h4>About</h4>
@@ -57,6 +59,7 @@
           <button id="saveAbout" class="hidden">Save</button>
         </div>
 
+        <!-- EDUCATION & EMPLOYMENT -->
         <div class="card">
           <div class="card-head">
             <h4>Education & Employment</h4>
@@ -83,24 +86,11 @@
 
       </div>
 
-      <div id="sessions" class="tab-pane hidden">
-        <div class="card">
-          <ul id="sessionInfo"></ul>
-        </div>
-      </div>
-
-      <div id="blogs" class="tab-pane hidden">
-        <div class="card">
-          <div id="blogsList"></div>
-        </div>
-      </div>
-
-      <div id="settings" class="tab-pane hidden">
-        <div class="card">Settings coming soon.</div>
-      </div>
+      <div id="sessions" class="tab-pane hidden"></div>
+      <div id="blogs" class="tab-pane hidden"></div>
+      <div id="settings" class="tab-pane hidden"></div>
 
     </section>
-
   </div>
 </main>
 
@@ -110,5 +100,3 @@
 <script type="module" src="js/profile.js"></script>
 </body>
 </html>
-
-
