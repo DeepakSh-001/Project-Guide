@@ -1,27 +1,18 @@
-import { auth } from "./firebase.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-
-import {doc, getDoc, setDoc, collection,
-  query, where, getDocs, serverTimestamp
-} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
-
-import {
-  ref, uploadBytes, getDownloadURL
-} from "https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js";
-
 import { auth, db, storage } from "./firebase.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+import { doc, getDoc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js";
 
 /* TAB SWITCH */
 document.querySelectorAll(".tab").forEach(tab => {
   tab.onclick = () => {
     document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-    document.querySelectorAll(".tab-section").forEach(s => s.classList.add("hidden"));
+    document.querySelectorAll(".tab-pane").forEach(p => p.classList.add("hidden"));
     tab.classList.add("active");
     document.getElementById(tab.dataset.tab).classList.remove("hidden");
   };
 });
 
-/* AUTH */
 onAuthStateChanged(auth, async (user) => {
   if (!user) return location.href = "login.html";
 
@@ -45,85 +36,56 @@ onAuthStateChanged(auth, async (user) => {
     locationView.textContent = d.location || "";
   }
 
-  sessionInfo.innerHTML = `
-    <li>Sessions taken: 0</li>
-    <li>Upcoming sessions: 0</li>
-  `;
-
-  loadBlogs(user.uid);
-});
-
-/* ABOUT */
-editAboutBtn.onclick = () => {
-  aboutInput.value = aboutView.textContent;
-  aboutView.classList.add("hidden");
-  aboutInput.classList.remove("hidden");
-  saveAboutBtn.classList.remove("hidden");
-};
-
-saveAboutBtn.onclick = async () => {
-  await setDoc(doc(db, "users", auth.currentUser.uid), {
-    about: aboutInput.value,
-    updatedAt: serverTimestamp()
-  }, { merge: true });
-
-  aboutView.textContent = aboutInput.value;
-  aboutView.classList.remove("hidden");
-  aboutInput.classList.add("hidden");
-  saveAboutBtn.classList.add("hidden");
-};
-
-/* PROFILE DETAILS */
-editProfileBtn.onclick = () => {
-  collegeInput.value = collegeView.textContent;
-  degreeInput.value = degreeView.textContent;
-  companyInput.value = companyView.textContent;
-  jobInput.value = jobView.textContent;
-  locationInput.value = locationView.textContent;
-
-  profileView.classList.add("hidden");
-  profileEdit.classList.remove("hidden");
-};
-
-saveProfileBtn.onclick = async () => {
-  const data = {
-    college: collegeInput.value,
-    degree: degreeInput.value,
-    company: companyInput.value,
-    jobTitle: jobInput.value,
-    location: locationInput.value,
-    updatedAt: serverTimestamp()
+  /* ABOUT */
+  editAbout.onclick = () => {
+    aboutInput.value = aboutView.textContent;
+    aboutView.classList.add("hidden");
+    aboutInput.classList.remove("hidden");
+    saveAbout.classList.remove("hidden");
   };
 
-  await setDoc(doc(db, "users", auth.currentUser.uid), data, { merge: true });
+  saveAbout.onclick = async () => {
+    await setDoc(refDoc, { about: aboutInput.value, updatedAt: serverTimestamp() }, { merge: true });
+    aboutView.textContent = aboutInput.value;
+    aboutView.classList.remove("hidden");
+    aboutInput.classList.add("hidden");
+    saveAbout.classList.add("hidden");
+  };
 
-  collegeView.textContent = data.college;
-  degreeView.textContent = data.degree;
-  companyView.textContent = data.company;
-  jobView.textContent = data.jobTitle;
-  locationView.textContent = data.location;
+  /* PROFILE */
+  editProfile.onclick = () => {
+    collegeInput.value = collegeView.textContent;
+    degreeInput.value = degreeView.textContent;
+    companyInput.value = companyView.textContent;
+    jobInput.value = jobView.textContent;
+    locationInput.value = locationView.textContent;
+    profileView.classList.add("hidden");
+    profileEdit.classList.remove("hidden");
+  };
 
-  profileEdit.classList.add("hidden");
-  profileView.classList.remove("hidden");
-};
+  saveProfile.onclick = async () => {
+    const data = {
+      college: collegeInput.value,
+      degree: degreeInput.value,
+      company: companyInput.value,
+      jobTitle: jobInput.value,
+      location: locationInput.value,
+      updatedAt: serverTimestamp()
+    };
+    await setDoc(refDoc, data, { merge: true });
+    Object.assign(collegeView, { textContent: data.college });
+    Object.assign(degreeView, { textContent: data.degree });
+    Object.assign(companyView, { textContent: data.company });
+    Object.assign(jobView, { textContent: data.jobTitle });
+    Object.assign(locationView, { textContent: data.location });
+    profileEdit.classList.add("hidden");
+    profileView.classList.remove("hidden");
+  };
 
-/* PHOTO */
-uploadPic.onchange = async (e) => {
-  const file = e.target.files[0];
-  const picRef = ref(storage, `profile-pictures/${auth.currentUser.uid}`);
-  await uploadBytes(picRef, file);
-  profilePic.src = await getDownloadURL(picRef);
-};
-
-/* BLOGS */
-async function loadBlogs(uid) {
-  const q = query(collection(db, "blogs"), where("authorId", "==", uid));
-  const snap = await getDocs(q);
-
-  blogsList.innerHTML = snap.empty ? "No blogs yet." : "";
-
-  snap.forEach(d => {
-    const b = d.data();
-    blogsList.innerHTML += `<p><b>${b.title}</b></p>`;
-  });
-}
+  uploadPic.onchange = async (e) => {
+    const file = e.target.files[0];
+    const picRef = ref(storage, `profile-pictures/${user.uid}`);
+    await uploadBytes(picRef, file);
+    profilePic.src = await getDownloadURL(picRef);
+  };
+});
