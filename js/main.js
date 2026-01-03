@@ -158,14 +158,19 @@ const strikeLine = document.querySelector(".strike-line");
 if (strikeLine) {
   function animateStrike() {
     strikeLine.classList.add("active");
+
     setTimeout(() => {
       strikeLine.classList.remove("active");
     }, 800);
   }
 
-  // run strike once on load
-  setTimeout(animateStrike, 800);
+  // run strike continuously
+  setTimeout(() => {
+    animateStrike();
+    setInterval(animateStrike, 3000);
+  }, 800);
 }
+
 
 /* ---------- TYPEWRITER ANIMATION (Insider) ---------- */
 if (dynamicWord) {
