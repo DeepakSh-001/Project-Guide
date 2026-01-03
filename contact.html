@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Contact Us | Project Guide</title>
+  <title>Contact Us | MeetInsider</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Fonts & Icons -->
@@ -11,32 +11,36 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/contact_page.css">
+  <link rel="stylesheet" href="css/contact.css">
 </head>
 
 <body>
 
-<!-- NAVBAR (Injected via JS) -->
+<!-- NAVBAR -->
 <div id="navbar"></div>
 
 <!-- CONTENT -->
-<form class="contact-form" id="contactForm">
-  <h2>Contact Us</h2>
-  <p class="sub">Have a question? Reach out to us.</p>
+<div class="contact-container">
+  <form class="contact-form" id="contactForm">
+    <h2>Contact Us</h2>
+    <p class="sub">Have a question? Reach out to us.</p>
 
-  <input type="text" name="name" placeholder="Your Name" required>
-  <input type="email" name="email" placeholder="Email" required>
-  <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
 
-  <button type="submit" class="send-btn" id="sendBtn">
-    <span class="btn-text">Send Message</span>
-    <span class="btn-loader"></span>
-  </button>
+    <button type="submit" class="send-btn" id="sendBtn">
+      <span class="btn-text">
+        <i class="fa-solid fa-paper-plane"></i> Send Message
+      </span>
+      <span class="btn-loader"></span>
+    </button>
 
-  <p class="contact-note">
-    Or email us at <b>support@projectguide.in</b>
-  </p>
-</form>
+    <p class="contact-note">
+      Or email us at <b>support@meetinsider.in</b>
+    </p>
+  </form>
+</div>
 
 <!-- SUCCESS MODAL -->
 <div class="modal" id="successModal">
@@ -48,17 +52,13 @@
   </div>
 </div>
 
-
-<!-- FOOTER (Injected via JS) -->
+<!-- FOOTER -->
 <div id="footer"></div>
 
 <!-- JS -->
-<script type="module" src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/emailjs.min.js"></script>
+<script src="js/main.js" type="module"></script>
 <script src="js/contact.js"></script>
+
 </body>
 </html>
-
-
-
-
-
