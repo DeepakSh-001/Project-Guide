@@ -20,26 +20,34 @@
 <div id="navbar"></div>
 
 <!-- CONTENT -->
-<div class="container contact-container">
-  <form class="contact-form">
-    <h2>Contact Us</h2>
-    <p class="sub">Have a question? Reach out to us.</p>
+<form class="contact-form" id="contactForm">
+  <h2>Contact Us</h2>
+  <p class="sub">Have a question? Reach out to us.</p>
 
-    <input type="text" placeholder="Your Name" required>
-    <input type="email" placeholder="Email" required>
-    <textarea rows="4" placeholder="Your Message" required></textarea>
+  <input type="text" name="name" placeholder="Your Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
 
-    <button type="submit" class="btn-primary send-btn">
-    <i class="fa-solid fa-paper-plane"></i>
-    Send Message
-    </button>
+  <button type="submit" class="send-btn" id="sendBtn">
+    <span class="btn-text">Send Message</span>
+    <span class="btn-loader"></span>
+  </button>
 
+  <p class="contact-note">
+    Or email us at <b>support@projectguide.in</b>
+  </p>
+</form>
 
-    <p class="contact-note">
-      Or email us at <b>support@projectguide.in</b>
-    </p>
-  </form>
+<!-- SUCCESS MODAL -->
+<div class="modal" id="successModal">
+  <div class="modal-box">
+    <i class="fa-solid fa-circle-check"></i>
+    <h3>Message Sent!</h3>
+    <p>We’ll get back to you shortly.</p>
+    <button id="closeModal">Okay</button>
+  </div>
 </div>
+
 
 <!-- FOOTER (Injected via JS) -->
 <div id="footer"></div>
@@ -48,5 +56,6 @@
 <script type="module" src="js/main.js"></script>
 </body>
 </html>
+
 
 
