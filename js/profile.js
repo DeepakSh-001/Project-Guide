@@ -1,17 +1,15 @@
 import { auth } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
 
-import {
-  getFirestore, doc, getDoc, setDoc, collection,
+import {doc, getDoc, setDoc, collection,
   query, where, getDocs, serverTimestamp
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
 
 import {
-  getStorage, ref, uploadBytes, getDownloadURL
+  ref, uploadBytes, getDownloadURL
 } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js";
 
-const db = getFirestore();
-const storage = getStorage();
+import { auth, db, storage } from "./firebase.js";
 
 /* TAB SWITCH */
 document.querySelectorAll(".tab").forEach(tab => {
