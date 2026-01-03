@@ -147,30 +147,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ================= HERO TEXT ANIMATION ================= */
   const words = ["Insider", "Alumni"];
-  let index = 0;
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
 
-  const dynamicWord = document.getElementById("dynamic-word");
-  const strikeLine = document.querySelector(".strike-line");
+const dynamicWord = document.getElementById("dynamic-word");
+const strikeLine = document.querySelector(".strike-line");
 
-  if (dynamicWord && strikeLine) {
-    function animateHero() {
-      strikeLine.classList.add("active");
+/* ---------- STRIKE ANIMATION (Stop guessing) ---------- */
+if (strikeLine) {
+  function animateStrike() {
+    strikeLine.classList.add("active");
+    setTimeout(() => {
+      strikeLine.classList.remove("active");
+    }, 800);
+  }
 
-      setTimeout(() => {
-        index = (index + 1) % words.length;
-        dynamicWord.textContent = words[index];
-      }, 400);
+  // run strike once on load
+  setTimeout(animateStrike, 800);
+}
 
-      setTimeout(() => {
-        strikeLine.classList.remove("active");
-      }, 800);
+/* ---------- TYPEWRITER ANIMATION (Insider) ---------- */
+if (dynamicWord) {
+  const typingSpeed = 120;
+  const deletingSpeed = 80;
+  const pauseAfterType = 1200;
+
+  function typeEffect() {
+    const currentWord = words[wordIndex];
+
+    if (!isDeleting) {
+      dynamicWord.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+
+      if (charIndex === currentWord.length) {
+        setTimeout(() => (isDeleting = true), pauseAfterType);
+      }
+    } else {
+      dynamicWord.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+
+      if (charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+      }
     }
 
-    setTimeout(() => {
-      animateHero();
-      setInterval(animateHero, 3000);
-    }, 1000);
+    setTimeout(
+      typeEffect,
+      isDeleting ? deletingSpeed : typingSpeed
+    );
   }
+
+  setTimeout(typeEffect, 1000);
+}
 
   /* ================= BOOK SESSION ================= */
   const payBtn = document.getElementById("payBtn");
