@@ -27,19 +27,20 @@
       <aside class="profile-sidebar">
 
         <div class="profile-avatar">
-        <img id="profilePic" />
-        <label class="profile-upload-btn">
-          Change photo
-        <input type="file" id="uploadPic" hidden />
-        </label>
+          <img id="profilePic" alt="Profile Picture" />
+          <label class="profile-upload-btn">
+            Change photo
+            <input type="file" id="uploadPic" hidden />
+          </label>
         </div>
 
         <h3 id="userName">User Name</h3>
         <span class="role-badge" id="userRole">Role</span>
 
         <div class="profile-info">
-        <p><strong>Email:</strong> <span id="email"></span></p>
+          <p><strong>Email:</strong> <span id="email"></span></p>
         </div>
+
         <button id="goDashboardBtn" class="dashboard-btn">
           Go to Dashboard →
         </button>
@@ -57,7 +58,7 @@
         </div>
 
         <!-- OVERVIEW -->
-        <div class="card">
+        <div class="profile-card">
           <h4>About</h4>
           <p>
             Tell others about your background, goals, and how MeetInsider helps you.
@@ -65,7 +66,7 @@
         </div>
 
         <!-- SESSIONS -->
-        <div class="card">
+        <div class="profile-card">
           <h4>Sessions</h4>
           <ul id="sessionInfo"></ul>
         </div>
@@ -92,5 +93,3 @@
 
 </body>
 </html>
-
-
