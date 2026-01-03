@@ -1,6 +1,6 @@
 import emailjs from "https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/emailjs.min.js";
 
-emailjs.init("YOUR_PUBLIC_KEY");
+emailjs.init("1mA9JZN7cVkRnUYeW");
 
 const form = document.getElementById("contactForm");
 const sendBtn = document.getElementById("sendBtn");
@@ -14,8 +14,8 @@ form.addEventListener("submit", (e) => {
   sendBtn.disabled = true;
 
   emailjs.sendForm(
-    "YOUR_SERVICE_ID",
-    "YOUR_TEMPLATE_ID",
+    "service_3b2xgo8",
+    "template_1xpjq3f",
     form
   )
   .then(() => {
