@@ -1,23 +1,16 @@
-.profile-page {
-  padding: 100px 24px;
-  background: #0b1220;
-  min-height: 100vh;
-}
-
-.profile-grid {
+.profile-wrapper {
   max-width: 1200px;
-  margin: auto;
+  margin: 120px auto;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 300px 1fr;
   gap: 32px;
 }
 
-.profile-left,
-.profile-right {
+.profile-left {
   background: #111827;
-  border-radius: 18px;
-  padding: 28px;
-  color: #e5e7eb;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
 }
 
 .avatar {
@@ -25,12 +18,11 @@
   height: 120px;
   border-radius: 50%;
   background: #0b5ed7;
-  object-fit: cover;
 }
 
-.upload {
+.edit-photo {
   display: block;
-  margin: 10px 0;
+  margin: 8px 0;
   color: #93c5fd;
   cursor: pointer;
 }
@@ -39,21 +31,26 @@
   display: inline-block;
   padding: 6px 12px;
   background: #334155;
-  border-radius: 20px;
+  border-radius: 999px;
   font-size: 13px;
+}
+
+.profile-right {
+  background: #111827;
+  padding: 24px;
+  border-radius: 16px;
 }
 
 .tabs {
   display: flex;
   gap: 10px;
+  margin-bottom: 20px;
 }
 
 .tab {
   padding: 10px 16px;
-  border-radius: 12px;
   background: #1f2937;
-  color: white;
-  border: none;
+  border-radius: 10px;
   cursor: pointer;
 }
 
@@ -61,16 +58,13 @@
   background: #0b5ed7;
 }
 
-.card {
-  background: #1f2937;
-  padding: 20px;
-  border-radius: 16px;
-  margin-top: 20px;
-}
-
-.card-head {
-  display: flex;
-  justify-content: space-between;
+.tab-section input,
+.tab-section select {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
 }
 
 .hidden {
