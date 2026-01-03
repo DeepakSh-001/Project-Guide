@@ -1,79 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Profile | MeetInsider</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/profile.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <div id="navbar"></div> <!-- Navbar injected by main.js -->
 
-<header class="topbar">
-  <h2>MeetInsider</h2>
-</header>
+    <div class="profile-container">
+        <!-- Left Hand Side (LHS) -->
+        <div class="lhs">
+            <div class="profile-picture-section">
+                <img id="profile-pic" src="default-avatar.png" alt="Profile Picture">
+                <button id="edit-pic-btn">Edit Picture</button>
+                <input type="file" id="pic-upload" accept="image/*" style="display: none;">
+            </div>
+            <div class="badge-section">
+                <span id="user-badge">Mentee</span> <!-- Dynamically set to Mentor or Mentee -->
+            </div>
+            <div class="email-section">
+                <p id="user-email">user@example.com</p>
+            </div>
+            <div class="navigation">
+                <a href="dashboard.html">Go to Dashboard</a>
+                <!-- Add other links as needed, e.g., <a href="logout.html">Logout</a> -->
+            </div>
+        </div>
 
-<div class="profile-layout">
+        <!-- Right Hand Side (RHS) -->
+        <div class="rhs">
+            <!-- Section 1: Personal Details -->
+            <div class="section" id="personal-details">
+                <h3>Personal Details</h3>
+                <form id="personal-form">
+                    <label>College:</label>
+                    <input type="text" id="college" readonly>
+                    
+                    <label>Employee Details:</label>
+                    <input type="text" id="employee-details" readonly>
+                    
+                    <label>Interests:</label>
+                    <select id="interests" multiple disabled>
+                        <option value="reading">Reading</option>
+                        <option value="sports">Sports</option>
+                        <option value="coding">Coding</option>
+                        <option value="travel">Travel</option>
+                        <!-- Add more options -->
+                    </select>
+                    
+                    <!-- Add other fields as needed, e.g., bio, location -->
+                    <label>Bio:</label>
+                    <textarea id="bio" readonly></textarea>
+                    
+                    <button type="button" id="edit-btn" style="display: none;">Edit</button>
+                    <button type="submit" id="save-btn" style="display: none;">Save</button>
+                </form>
+            </div>
 
-  <!-- LEFT SIDEBAR -->
-  <aside class="profile-sidebar">
-    <div class="avatar-wrapper">
-      <img id="profilePic" src="https://via.placeholder.com/120" />
-      <label class="upload-btn">
-        Change
-        <input type="file" id="uploadPic" hidden />
-      </label>
+            <!-- Section 2: Upcoming Sessions -->
+            <div class="section" id="upcoming-sessions">
+                <h3>Upcoming Sessions</h3>
+                <ul id="sessions-list">
+                    <!-- Dynamically populated -->
+                </ul>
+            </div>
+
+            <!-- Section 3: Blogs -->
+            <div class="section" id="blogs">
+                <h3 id="blogs-title">Saved Blogs</h3> <!-- Changes to "Published Blogs" for mentors -->
+                <ul id="blogs-list">
+                    <!-- Dynamically populated -->
+                </ul>
+            </div>
+
+            <!-- Section 4: Settings -->
+            <div class="section" id="settings">
+                <h3>Settings</h3>
+                <p>Coming Soon</p>
+            </div>
+        </div>
     </div>
 
-    <h3 id="userName">User Name</h3>
-    <span class="role-badge" id="userRole">Mentor</span>
+    <div id="footer"></div> <!-- Footer injected by main.js -->
 
-    <div class="info">
-      <p><b>Email:</b> <span id="email"></span></p>
-      <p><b>Expertise:</b> Career Guidance</p>
-    </div>
-  </aside>
-
-  <!-- MAIN CONTENT -->
-  <main class="profile-main">
-
-    <div class="tabs">
-      <button class="tab active">Overview</button>
-      <button class="tab">Sessions</button>
-      <button class="tab">Blogs</button>
-      <button class="tab">Settings</button>
-    </div>
-
-    <!-- OVERVIEW -->
-    <section class="card">
-      <h4>About</h4>
-      <p>
-        Passionate about helping students and professionals make confident
-        career decisions.
-      </p>
-    </section>
-
-    <!-- SESSIONS -->
-    <section class="card">
-      <h4>Sessions</h4>
-      <ul>
-        <li>Sessions completed: 0</li>
-        <li>Upcoming sessions: 0</li>
-      </ul>
-    </section>
-
-    <!-- BLOGS -->
-    <section class="card">
-      <h4>Blogs by you</h4>
-      <p>No blogs published yet.</p>
-      <button class="btn">Write your first blog</button>
-    </section>
-
-  </main>
-</div>
-
-<script src="js/profile.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
