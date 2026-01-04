@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ================= HERO TEXT ANIMATION ================= */
-  const words = ["Insider", "Alumni"];
+  const words = ["Insider", "Alumni", "Mentor"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
